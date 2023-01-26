@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_System : MonoBehaviour
-{
+public class Player_System : MonoBehaviour {
     // Score
     public float Score;
     public float OldScore;
@@ -22,30 +21,27 @@ public class Player_System : MonoBehaviour
     // Tower
     public int Tower;
 
-    void Update()
-    {
+    void Update () {
         // Score
 
         height = transform.position.y;
 
-        if(height > maxheight && height <= 101f)
-        {
+        if (height > maxheight && height <= 101f) {
             maxheight = height;
         }
 
         // Spagetti code pour regler un bug sur le reset du score à la mort (mais si on abandonne le score osef)
-        if(height < 2 && !is7Calibur)
-        {
+        if (height < 2 && !is7Calibur) {
             maxheight = 0f;
         }
 
         // Montee
         ClimbScore = maxheight;
         // Descente
-        FallScore = 100 - CollisionPenalty*CompteurCollision;
-        
+        FallScore = 100 - CollisionPenalty * CompteurCollision;
+
         Score = OldScore + NewScore;
-        
+
         NewScore = ClimbScore + FallScore;
     }
 }

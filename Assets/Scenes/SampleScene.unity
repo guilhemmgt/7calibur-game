@@ -306,6 +306,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3102336714040801183, guid: 33e34845829810045a1bd0d46b06f201,
         type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102336714040801183, guid: 33e34845829810045a1bd0d46b06f201,
+        type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1494974163}
@@ -867,7 +872,7 @@ PrefabInstance:
     - target: {fileID: 7581180345335239521, guid: 2954bca9853954d46827c476e184f11e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7581180345335239522, guid: 2954bca9853954d46827c476e184f11e,
         type: 3}
@@ -933,11 +938,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581180345335262365, guid: 2954bca9853954d46827c476e184f11e,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7581180345351540781, guid: 2954bca9853954d46827c476e184f11e,
         type: 3}
@@ -1146,10 +1146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundCheck: {fileID: 1417067067}
-  Player: {fileID: 1494974163}
   body: {fileID: 0}
   verticalBounce: 10
   verticalWallBounce: 5
+  horizontalWallBounce: 1
   horizontalSlide: 5
   jump: 7
   isBroken: 0
@@ -1268,7 +1268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2.56}
+  m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
 --- !u!114 &1494974169
 MonoBehaviour:
@@ -1361,6 +1361,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ground_Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871858315292614212, guid: 83f4e5316a43b174cb16a1980df56bbe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871858315292614212, guid: 83f4e5316a43b174cb16a1980df56bbe,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
