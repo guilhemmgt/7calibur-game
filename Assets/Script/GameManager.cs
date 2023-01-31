@@ -37,18 +37,20 @@ public class GameManager : MonoBehaviour
     // Spawn
     public int spawn_number = 300;  // Combien d'entités apparaissent
     public int Frequence_Sword;     // Rand(0..100) < Frequence_Sword => Spawn Sword
-                                    // Rand(0..100) > Frequence_Sword => Spawn Plateforme
+
     // Borne Hauteur de Spawn
     public float Min_H;
     public float Max_H;
-    // [Epee] Borne Largeur de Spawn
+    // [Epee] Borne Largeur de Spawn Par rapport à la plateforme
     public float Sword_Min_L;
     public float Sword_Max_L;
+    // [Epee] Borne Hauteur de Spawn Par rapport à la plateforme
+    public float Sword_Min_H;
+    public float Sword_Max_H;
     // [Plateforme] Borne Largeur de Spawn
     public float Platform_Min_L;
     public float Platform_Max_L;
-    
-    
+
     void Awake()
     {
         player_system = Player.GetComponent<Player_System>();
@@ -145,13 +147,30 @@ public class GameManager : MonoBehaviour
     public void Spawn()
     {
         Vector3 spawn_position = new Vector3();
-        int R;
-        int Sword_Side; // 0 = > Droite 1 ; 1 => Gauche
 
         for (int i = 0 ; i < spawn_number ; i++){
 
-            R = Random.Range(0, 100);
+            // Spawn Plateforme
+            spawn_position.y += Random.Range(Min_H , Max_H);
+            spawn_position.x = Random.Range(Platform_Min_L , Platform_Max_L);
+            GameObject new_Plateform = Instantiate(platform, spawn_position, Quaternion.identity);
 
+            // Spawn Sword
+
+            GameObject new_sword = Spawn_Something(sword, Frequence_Sword, spawn_position, Sword_Min_L, Sword_Max_L, Sword_Min_H, Sword_Max_H);
+
+            // Angle
+
+            if (new_sword!=null)
+            {   
+                float AngleRandom = Random.Range(30f, 150f);
+                new_sword.transform.Rotate(0f, 0f, AngleRandom, Space.World);
+            }
+            
+            
+
+            // Old
+            /*
             if(R <= Frequence_Sword) 
             // Sword Spawn
             {
@@ -182,9 +201,32 @@ public class GameManager : MonoBehaviour
 
                 GameObject new_Plateform = Instantiate(platform, spawn_position, Quaternion.identity);
             }
+            */
             
         }
     }
+
+    public GameObject Spawn_Something(GameObject Something, int Frequence, Vector3 spawn_position, float RangeSide_Min, float RangeSide_Max, float RangeH_Min, float RangeH_Max)
+    {
+        int R = Random.Range(0, 100);
+
+        if(R <= Frequence) 
+        {
+            // Position
+            spawn_position.x += Random.Range(RangeSide_Min , RangeSide_Max);
+            spawn_position.y += Random.Range(RangeH_Min , RangeH_Max);
+    
+            //Spawn
+            GameObject new_something = Instantiate(sword, spawn_position, Quaternion.identity);
+
+            return new_something;
+        }
+        else 
+        {
+            return null;
+        }
+    }
+
 
     public void Same_Tower()
     {
@@ -206,6 +248,14 @@ public class GameManager : MonoBehaviour
         Dragon_Setup();
 
         player_system.Tower += 1;
+    }
+
+    // Truc pour les rotations tkt 
+    // Change the Quaternion values depending on the values of the Sliders
+    private static Quaternion Change(float x, float y, float z)
+    {
+        //Return the new Quaternion
+        return new Quaternion(x, y , z, 1);
     }
 }
 

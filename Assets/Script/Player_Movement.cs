@@ -67,12 +67,6 @@ public class Player_Movement : MonoBehaviour {
             canWallJump = true;
             isWallJumping = false;
 
-            // /!\ code un nul, si on touche une épée (sword_system) ça fait un Not Found mais vu qu'on va remplacer sword_system par platform_system c'est pas grave
-            // /!\ d'ailleurs la destruction des épées est tjr gérée par le script sword_system ...
-            Platform_System platform_sys = other.transform.GetComponent<Platform_System> ();
-            if (platform_sys.Destoyable) {
-                Destroy (other.gameObject, platform_sys.Destroy_time);
-            }
         } else if (other.gameObject.tag == "Wall" && canWallJump) {
             // Wall jump
             body.velocity = new Vector2 (-moveX * horizontalWallBounce, verticalWallBounce);

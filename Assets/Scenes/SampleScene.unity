@@ -154,7 +154,7 @@ Transform:
   - {fileID: 1692707420}
   - {fileID: 1416000024}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50435873
 GameObject:
@@ -449,7 +449,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &898744186
 MonoBehaviour:
@@ -627,10 +627,12 @@ MonoBehaviour:
   Frequence_Sword: 50
   Min_H: 2
   Max_H: 2
-  Sword_Min_L: 3
-  Sword_Max_L: 4.5
-  Platform_Min_L: -3
-  Platform_Max_L: 3
+  Sword_Min_L: -0.9
+  Sword_Max_L: 0.9
+  Sword_Min_H: 0.4
+  Sword_Max_H: 0.4
+  Platform_Min_L: -4.5
+  Platform_Max_L: 4.5
 --- !u!1001 &1358404148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -785,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 7581180344371021047, guid: 2954bca9853954d46827c476e184f11e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7581180344371021047, guid: 2954bca9853954d46827c476e184f11e,
         type: 3}
@@ -1993,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 7693861486630714884, guid: 3efbd89c0cdddd744a36a4beb770eb74,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7693861486630714884, guid: 3efbd89c0cdddd744a36a4beb770eb74,
         type: 3}
