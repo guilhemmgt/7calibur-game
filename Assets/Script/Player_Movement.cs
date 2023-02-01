@@ -10,6 +10,7 @@ public class Player_Movement : MonoBehaviour {
     // Joueur
     private Player_System player_system;
     public Rigidbody2D body;
+    public SpriteRenderer sprite;
 
     // Constantes
     public float verticalBounce = 10f;
@@ -26,10 +27,13 @@ public class Player_Movement : MonoBehaviour {
 
     // Variables
     private float moveX;
+    private float moveXBouton;
+    private float moveXClavier;
 
 
     void Awake () {
-        body = GetComponent<Rigidbody2D> ();
+        body = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         groundCheck_System = GroundCheck.GetComponent<GroundCheck_System> ();
         player_system = GetComponent<Player_System> ();
     }
@@ -45,16 +49,21 @@ public class Player_Movement : MonoBehaviour {
         }
 
         // Movement
-        //moveX = Input.GetAxis ("Horizontal") * horizontalSlide;
+        moveXClavier = Input.GetAxis ("Horizontal") * horizontalSlide;
+
+        moveX = moveXBouton + moveXClavier;
     }
 
     private void FixedUpdate () {
+
         if (!isWallJumping) {
             body.velocity = new Vector2 (moveX, body.velocity.y);
         }
+        
     }
 
     private void OnCollisionEnter2D (Collision2D other) {
+
         if (isBroken || player_system.is7Calibur) {
             return;
         }
@@ -71,9 +80,9 @@ public class Player_Movement : MonoBehaviour {
             // Wall jump
             body.velocity = new Vector2 (-moveX * horizontalWallBounce, verticalWallBounce);
             jump -= 1;
-
             canWallJump = false;
             isWallJumping = true;
+
         } else if (other.gameObject.tag == "Wall" && !canWallJump) {
             // Toucher un mur après un wall jump
             isWallJumping = false;

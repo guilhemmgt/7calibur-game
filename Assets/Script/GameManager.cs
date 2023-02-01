@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     private void Start() 
     {
         Spawn();
+        Player_Setup();
+        Dragon_Setup();
     }
 
 
@@ -166,42 +168,6 @@ public class GameManager : MonoBehaviour
                 float AngleRandom = Random.Range(30f, 150f);
                 new_sword.transform.Rotate(0f, 0f, AngleRandom, Space.World);
             }
-            
-            
-
-            // Old
-            /*
-            if(R <= Frequence_Sword) 
-            // Sword Spawn
-            {
-                // Side
-                Sword_Side = Random.Range(0, 2); 
-
-                // Largeur
-                if(Sword_Side == 1)
-                {
-                    spawn_position.x = -Random.Range(Sword_Min_L , Sword_Max_L);
-                }
-                else
-                {
-                    spawn_position.x = Random.Range(Sword_Min_L , Sword_Max_L);
-                }
-
-                // Hauteur
-                spawn_position.y += Random.Range(Min_H , Max_H); 
-                
-                //Spawn
-                GameObject new_Sword = Instantiate(sword, spawn_position, Quaternion.identity);
-            }
-            else 
-            // Spawn Plateforme
-            {
-                spawn_position.y += Random.Range(Min_H , Max_H);
-                spawn_position.x = Random.Range(Platform_Min_L , Platform_Max_L);
-
-                GameObject new_Plateform = Instantiate(platform, spawn_position, Quaternion.identity);
-            }
-            */
             
         }
     }
