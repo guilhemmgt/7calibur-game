@@ -15,8 +15,8 @@ public class Player_System : MonoBehaviour {
     public float CollisionPenalty;
 
     // Etats
-    public bool isOver;
-    public bool is7Calibur;
+    public bool isOver = false;
+    public bool is7Calibur = false;
 
     // Tower
     public int Tower;

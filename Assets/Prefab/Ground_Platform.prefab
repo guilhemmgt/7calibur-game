@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4871858315292614212}
   - component: {fileID: 3609856797441430296}
   - component: {fileID: 8105002131965098300}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground_Platform
   m_TagString: GroundPlatform
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6213905282701912243
 SpriteRenderer:
@@ -122,7 +122,7 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   m_EdgeRadius: 0
   m_Points:
   - {x: -1.28, y: 0}
@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5204c1538adaf30439cd043a83b8d011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroy_time: 0
+  Destoyable: 0
