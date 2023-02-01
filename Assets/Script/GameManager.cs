@@ -56,9 +56,18 @@ public class GameManager : MonoBehaviour {
         UI_Manager = UI.GetComponent<UI_Manager> ();
         dragon_system = Dragon.GetComponent<Dragon_System> ();
     }
+<<<<<<< HEAD
 
     private void Start () {
         Spawn ();
+=======
+    
+    private void Start() 
+    {
+        Spawn();
+        Player_Setup();
+        Dragon_Setup();
+>>>>>>> 1600842933d89c2118803f5683a416d6f516ba40
     }
 
 
@@ -151,6 +160,7 @@ public class GameManager : MonoBehaviour {
                 float AngleRandom = Random.Range (30f, 150f);
                 new_sword.transform.Rotate (0f, 0f, AngleRandom, Space.World);
             }
+<<<<<<< HEAD
 
 
 
@@ -188,6 +198,9 @@ public class GameManager : MonoBehaviour {
             }
             */
 
+=======
+            
+>>>>>>> 1600842933d89c2118803f5683a416d6f516ba40
         }
     }
 

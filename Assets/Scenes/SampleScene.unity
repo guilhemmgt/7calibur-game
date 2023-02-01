@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 3102336714040801183, guid: 33e34845829810045a1bd0d46b06f201,
         type: 3}
       propertyPath: speed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3102336714040801183, guid: 33e34845829810045a1bd0d46b06f201,
         type: 3}
@@ -1545,6 +1545,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7871f72ecb064a458c8ccc05a0709ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  GroundCheck: {fileID: 1417067067}
+  body: {fileID: 0}
+  sprite: {fileID: 0}
+>>>>>>> 1600842933d89c2118803f5683a416d6f516ba40
   verticalBounce: 10
   verticalWallBounce: 8
   horizontalSlide: 5
