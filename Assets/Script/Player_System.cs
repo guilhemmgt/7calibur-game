@@ -11,8 +11,6 @@ public class Player_System : MonoBehaviour {
     public float ClimbScore;
     public float height;
     public float maxheight = 0;
-    public int CompteurCollision;
-    public float CollisionPenalty;
 
     // Etats
     public bool isOver = false;
@@ -37,11 +35,9 @@ public class Player_System : MonoBehaviour {
 
         // Montee
         ClimbScore = maxheight;
-        // Descente
-        FallScore = 100 - CollisionPenalty * CompteurCollision;
 
         Score = OldScore + NewScore;
 
-        NewScore = ClimbScore + FallScore;
+        NewScore = ClimbScore;
     }
 }

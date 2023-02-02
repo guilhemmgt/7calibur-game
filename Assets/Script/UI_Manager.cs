@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Manager : MonoBehaviour
-{
+public class UI_Manager : MonoBehaviour {
     // References
     // GameManager
-    public GameObject gameManager;
-    private GameManager s_gameManager;
+    private GameManager gameManager;
     // Player
-    public GameObject Player;
     private Player_Movement player_Movement;
     private Player_System player_system;
 
@@ -25,14 +22,13 @@ public class UI_Manager : MonoBehaviour
     public GameObject menuStart;
     public GameObject menuIG;
 
-    void Awake() 
-    {
-        s_gameManager = gameManager.GetComponent<GameManager>();
-        player_Movement = Player.GetComponent<Player_Movement>();
-        player_system = Player.GetComponent<Player_System>();
+    private void Awake () {
+        gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+        player_Movement = gameManager.player.GetComponent<Player_Movement> ();
+        player_system = gameManager.player.GetComponent<Player_System> ();
     }
-    void Update()
-    {   
+
+    private void Update () {
         // Score 
 
         Text_Score.text = "Score : " + (int)player_system.Score;
@@ -40,56 +36,49 @@ public class UI_Manager : MonoBehaviour
 
         // Jump 
 
-        if(player_Movement.jump > 0)
-        {
+        if (player_Movement.jump > 0) {
             Text_Jump.text = "Jump : " + player_Movement.jump;
-        }
-        else
-        {
+        } else {
             Text_Jump.text = "Jump : " + 0;
         }
-        
+
 
         // Menu Pause
 
-        if(Input.GetKeyDown(KeyCode.Escape) && s_gameManager.isLaunch){
-            if (s_gameManager.isPaused){
+        if (Input.GetKeyDown (KeyCode.Escape) && gameManager.isLaunch) {
+            if (gameManager.isPaused) {
                 Time.timeScale = 1f;
-                s_gameManager.isPaused = false;
-                menuPause.SetActive(false);
-            }
-            else{
+                gameManager.isPaused = false;
+                menuPause.SetActive (false);
+            } else {
                 Time.timeScale = 0f;
-                s_gameManager.isPaused = true;
-                menuPause.SetActive(true);
+                gameManager.isPaused = true;
+                menuPause.SetActive (true);
             }
         }
-        
-    
+
+
         // Menu Over
 
         if (player_system.isOver) {
-            Time.timeScale = 0f;  
-            menuOver.SetActive(player_system.isOver); 
+            Time.timeScale = 0f;
+            menuOver.SetActive (player_system.isOver);
         }
 
-        if((Input.anyKey) && player_system.isOver){
+        if ((Input.anyKey) && player_system.isOver) {
             player_system.maxheight = 0f;
-            s_gameManager.Launch();
+            gameManager.Launch ();
         }
 
         // Menu Start
 
-        if (!s_gameManager.isLaunch) {
-            Time.timeScale = 0f;  
-            menuStart.SetActive(!s_gameManager.isLaunch);     
+        if (!gameManager.isLaunch) {
+            Time.timeScale = 0f;
+            menuStart.SetActive (!gameManager.isLaunch);
         }
 
-        if((Input.anyKey) && !s_gameManager.isLaunch)
-        {
-            s_gameManager.Setup(); 
+        if ((Input.anyKey) && !gameManager.isLaunch) {
+            gameManager.Setup ();
         }
-
-
     }
 }

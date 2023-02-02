@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour {
-    // References
+    // Constantes
+    public float verticalBounce; // Force du saut
+    public float verticalWallBounce; // Force du walljump
+    public float horizontalSlide; // Vitesse du déplacement
 
-    // Joueur
+    // Composants
     private Player_System player_system;
     private Rigidbody2D body;
 
-    // Constantes
-    public float verticalBounce = 10f;
-    public float verticalWallBounce = 10f;
-    public float horizontalSlide = 10f;
-    public int jump = 7;
+    // Déplacement
+    public int jump = 7; // Nombre de sauts restants
+    private bool isBroken = false; // Épée brisée (plus de sauts)
+    private bool canWallJump = true; // Peut walljump
+    private float xInput = 0; // Input directionnel (-1, 0, 1)
 
-    // Etats
-    public bool isBroken = false;
-    public bool canWallJump = true;
-
-    // Variables
-    private float xInput = 0;
 
     private void Awake () {
         body = GetComponent<Rigidbody2D> ();
@@ -28,12 +25,7 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void Update () {
-        // Etats
-        if (jump <= 0) {
-            isBroken = true;
-        } else {
-            isBroken = false;
-        }
+        isBroken = jump <= 0;
     }
 
     private void FixedUpdate () {
@@ -41,16 +33,17 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D (Collision2D other) {
+        // Si plus d'épée ou en fin de niveau, plus de saut possible
         if (isBroken || player_system.is7Calibur)
             return;
 
-        // Jump
+        // Jump si on rebondit sur une plateforme
         if (other.relativeVelocity.y >= 0f && other.transform.GetComponent<Platform_System> () != null) {
             Jump (verticalBounce);
             canWallJump = true;
         }
 
-        // Wall Jump
+        // Wall Jump si on touche un mur
         if (other.gameObject.tag == "Wall" && canWallJump) {
             Jump (verticalWallBounce);
             canWallJump = false;
@@ -58,11 +51,13 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void Jump (float force) {
-        body.AddForce (new Vector2 (0f, force), ForceMode2D.Impulse);
+        //body.AddForce (new Vector2 (0f, force), ForceMode2D.Impulse);
+        body.velocity = new Vector2 (0, force);
 
         jump -= 1;
     }
 
+    // Appelé par l'UI
     public void Move (int direction) {
         xInput = direction;
     }
