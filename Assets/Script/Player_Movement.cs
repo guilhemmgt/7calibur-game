@@ -11,6 +11,7 @@ public class Player_Movement : MonoBehaviour {
     // Composants
     private Player_System player_system;
     private Rigidbody2D body;
+    private SpriteRenderer spriteRenderer;
 
     // Déplacement
     public int jump = 7; // Nombre de sauts restants
@@ -20,12 +21,20 @@ public class Player_Movement : MonoBehaviour {
 
 
     private void Awake () {
-        body = GetComponent<Rigidbody2D> ();
-        player_system = GetComponent<Player_System> ();
+        body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player_system = GetComponent<Player_System>();
     }
 
     private void Update () {
         isBroken = jump <= 0;
+
+        if (body.velocity.x > 0f){
+            spriteRenderer.flipX = true;
+        }
+        if (body.velocity.x < 0f){
+            spriteRenderer.flipX = false;
+        }
     }
 
     private void FixedUpdate () {
