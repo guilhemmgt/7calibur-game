@@ -346,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 3102336714040801181, guid: 33e34845829810045a1bd0d46b06f201,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -80
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 3102336714040801181, guid: 33e34845829810045a1bd0d46b06f201,
         type: 3}
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   isLaunch: 0
   isPaused: 0
   posPlayer: {x: 0, y: 2, z: 0}
-  posDragon: {x: 0, y: -80, z: 0}
+  posDragon: {x: 0, y: -70, z: 0}
   posGround: {x: 0, y: 0, z: 0}
   spawn_number: 50
   Frequence_Sword: 50
