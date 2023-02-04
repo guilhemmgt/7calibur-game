@@ -1419,7 +1419,7 @@ MonoBehaviour:
   posPlayer: {x: 0, y: 2, z: 0}
   posDragon: {x: 0, y: -70, z: 0}
   posGround: {x: 0, y: 0, z: 0}
-  spawn_number: 50
+  spawn_number: 49
   Frequence_Sword: 50
   Min_H: 2
   Max_H: 2

@@ -31,7 +31,7 @@ Transform:
   - {fileID: 1055431488798188408}
   - {fileID: 4316985381503209930}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055431488798188415
 GameObject:
@@ -158,11 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TopPlatform: {fileID: 1670940549008223731}
-  Ground: {fileID: 0}
   Dragon: {fileID: 0}
-  Player: {fileID: 0}
-  GameManager: {fileID: 0}
-  smoothTime: 1.5
 --- !u!1001 &1055431488295620506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,6 +246,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BodyType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315658717907689956, guid: 3913dcbd12d006043b114eae524d7888,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315658717907689956, guid: 3913dcbd12d006043b114eae524d7888,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315658717907689956, guid: 3913dcbd12d006043b114eae524d7888,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
