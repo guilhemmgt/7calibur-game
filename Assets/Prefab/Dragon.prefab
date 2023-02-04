@@ -124,7 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de964b9b4be2d2745ba2f6d4c52b4504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  GameManager: {fileID: 0}
   isAttacking: 1
-  speed: 2
+  speed: 1

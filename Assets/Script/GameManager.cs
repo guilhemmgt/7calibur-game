@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour {
             // Instanciation de l'épée
             Transform newSword = Instantiate (sword, swordPosition, Quaternion.identity, towerContent).transform;
             // Rotation de l'épée
-            float swordAngle = Random.Range (30f, 150f);
+            float swordAngle = Random.Range (-50f, 50f);
             newSword.Rotate (0, 0, swordAngle, Space.World);
 		}
 	}
