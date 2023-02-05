@@ -7,7 +7,7 @@ public class SeptCalibur_System : MonoBehaviour {
     // Terrain
     public GameObject TopPlatform;
     // Dragon
-    public GameObject Dragon;
+    private GameObject Dragon;
     private Dragon_System dragon_system;
     // Joueur
     private Player_System player_system;
@@ -18,6 +18,7 @@ public class SeptCalibur_System : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         dragon_system = gameManager.Dragon.GetComponent<Dragon_System> ();
         player_system = gameManager.player.GetComponent<Player_System> ();
+        Dragon = GameObject.Find ("Dragon");
     }
 
     private void OnTriggerEnter2D (Collider2D other) {

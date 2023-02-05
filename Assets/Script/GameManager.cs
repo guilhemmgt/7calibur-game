@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
         player_movement = player.GetComponent<Player_Movement> ();
         UI_Manager = GameObject.Find ("UI").GetComponent<UI_Manager> ();
         dragon_system = Dragon.GetComponent<Dragon_System> ();
+        Top = GameObject.Find ("Top");
 
         towerContent = GameObject.Find ("TowerContent").transform;
     }
