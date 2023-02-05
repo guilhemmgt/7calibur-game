@@ -29,10 +29,7 @@ public class SeptCalibur_System : MonoBehaviour {
 
             // Destroy Terrain
             Destroy (TopPlatform, 1f);
-            var Grounds = GameObject.FindGameObjectsWithTag ("GroundPlatform");
-            foreach (var Ground in Grounds) {
-                Destroy (Ground);
-            }
+            Destroy(this.gameObject);
 
             // Dragon
             Dragon.transform.position = gameManager.posDragon;

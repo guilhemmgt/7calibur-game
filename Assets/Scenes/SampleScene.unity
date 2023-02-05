@@ -739,20 +739,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1055431488798188408, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055431488798188408, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055431488798188410, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1664387
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055431488798188410, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.053745687
+      objectReference: {fileID: 0}
     - target: {fileID: 1055431488798188411, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.28087458
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1055431488798188411, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.068322025
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1055431488798188411, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.46226418
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1473,7 +1493,7 @@ MonoBehaviour:
   player: {fileID: 1494974163}
   Dragon: {fileID: 630360731}
   Ground: {fileID: 4381690925230549822, guid: 83f4e5316a43b174cb16a1980df56bbe, type: 3}
-  Top: {fileID: 665075718538163091, guid: ec686e669bf15074eb585c740542e612, type: 3}
+  Top: {fileID: 1055431488163793443, guid: 77c30980deef7f441bd2bcfd10a4fb4d, type: 3}
   sword: {fileID: 8544927621443471055, guid: cd7fcab7f0e126041b62abd0981b68d6, type: 3}
   platform: {fileID: 1843655373487153769, guid: 3913dcbd12d006043b114eae524d7888,
     type: 3}
@@ -1482,6 +1502,7 @@ MonoBehaviour:
   posPlayer: {x: 0, y: 2, z: 0}
   posDragon: {x: 0, y: -70, z: 0}
   posGround: {x: 0, y: 0, z: 0}
+  posTop: {x: 0, y: 99, z: 0}
   spawn_number: 49
   Frequence_Sword: 50
   Min_H: 2

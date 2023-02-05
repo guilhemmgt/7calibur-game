@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     public Vector3 posPlayer;
     public Vector3 posDragon;
     public Vector3 posGround;
+    public Vector3 posTop;
 
     // Variables
     // Spawn
@@ -55,7 +56,6 @@ public class GameManager : MonoBehaviour {
         player_movement = player.GetComponent<Player_Movement> ();
         UI_Manager = GameObject.Find ("UI").GetComponent<UI_Manager> ();
         dragon_system = Dragon.GetComponent<Dragon_System> ();
-        Top = GameObject.Find ("Top");
 
         towerContent = GameObject.Find ("TowerContent").transform;
     }
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour {
         // Terrain
         Despawn ();
         Spawn ();
-        Instantiate (Top, new Vector3 (0f, 100f, 0f), Quaternion.identity);
+        Instantiate (Top, posTop, Quaternion.identity);
         Instantiate (Ground, posGround, Quaternion.identity);
 
         // Score
