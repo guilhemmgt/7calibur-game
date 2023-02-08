@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour {
 
     private void Dragon_Setup () {
         Dragon.transform.position = posDragon;
-        dragon_system.isAttacking = true;
     }
 
     private void Score_Setup () {

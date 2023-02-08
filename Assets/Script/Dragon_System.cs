@@ -9,10 +9,6 @@ public class Dragon_System : MonoBehaviour {
     // GameManager
     private GameManager gameManager;
 
-
-    // Etats
-    public bool isAttacking;
-
     // Constantes
     public float speed;
 
@@ -24,24 +20,19 @@ public class Dragon_System : MonoBehaviour {
 
 
     private void Update () {
-        if (isAttacking) {
-            Move ();
+        if (!player_System.is7Calibur) {
+            transform.position += Vector3.up * speed * Time.deltaTime;
         }
     }
 
     private void OnTriggerEnter2D (Collider2D other) {
-        // Game Over
-        if (other.gameObject.tag == ("Player") && isAttacking) {
-            player_System.isOver = true;
-        }
+        if (other.tag != "Player")
+            return;
 
-        // Slain
-        if (other.gameObject.tag == ("Player") && player_System.is7Calibur) {
-            gameManager.Same_Tower ();
+        if (player_System.is7Calibur) {
+            gameManager.Same_Tower (); // Slain
+        } else {
+            player_System.isOver = true; // Game Over
         }
-    }
-
-    private void Move () {
-        transform.position += Vector3.up * speed * Time.deltaTime;
     }
 }

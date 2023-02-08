@@ -21,18 +21,18 @@ public class Player_Movement : MonoBehaviour {
 
 
     private void Awake () {
-        body = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        player_system = GetComponent<Player_System>();
+        body = GetComponent<Rigidbody2D> ();
+        spriteRenderer = GetComponent<SpriteRenderer> ();
+        player_system = GetComponent<Player_System> ();
     }
 
     private void Update () {
         isBroken = jump <= 0;
 
-        if (body.velocity.x > 0f){
+        if (body.velocity.x > 0f) {
             spriteRenderer.flipX = true;
         }
-        if (body.velocity.x < 0f){
+        if (body.velocity.x < 0f) {
             spriteRenderer.flipX = false;
         }
     }
@@ -41,13 +41,13 @@ public class Player_Movement : MonoBehaviour {
         body.velocity = new Vector2 (xInput * horizontalSlide, body.velocity.y);
     }
 
-    private void OnCollisionEnter2D (Collision2D other) {
+    public void OnFeetCollisionStay (Collision2D other) {
         // Si plus d'épée ou en fin de niveau, plus de saut possible
         if (isBroken || player_system.is7Calibur)
             return;
 
         // Jump si on rebondit sur une plateforme
-        if (other.relativeVelocity.y >= 0f && other.transform.GetComponent<Platform_System> () != null) {
+        if (body.velocity.y <= 0 && (other.transform.tag == "Platform" || other.transform.tag == "GroundPlatform")) {
             Jump (verticalBounce);
             canWallJump = true;
         }
@@ -59,8 +59,7 @@ public class Player_Movement : MonoBehaviour {
         }
     }
 
-    private void Jump (float force) {
-        //body.AddForce (new Vector2 (0f, force), ForceMode2D.Impulse);
+	private void Jump (float force) {
         body.velocity = new Vector2 (0, force);
 
         jump -= 1;

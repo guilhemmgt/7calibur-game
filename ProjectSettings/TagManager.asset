@@ -8,6 +8,8 @@ TagManager:
   - Platform
   - GroundPlatform
   - Sword
+  - Dragon
+  - TopPlatform
   layers:
   - Default
   - TransparentFX

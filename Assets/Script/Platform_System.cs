@@ -7,10 +7,6 @@ public class Platform_System : MonoBehaviour {
     // Joueur
     private Player_System player_system;
 
-    // Constantes
-    public float Destroy_time;
-    public bool Destoyable;
-
     // Composants
     private Collider2D coll;
 
@@ -25,9 +21,10 @@ public class Platform_System : MonoBehaviour {
 
     // Score Descente
     private void OnTriggerEnter2D (Collider2D other) {
-        Rigidbody2D body = other.gameObject.GetComponent<Rigidbody2D> ();
+        if (other.tag != "Player")
+            return;
 
-        if (body != null && player_system.is7Calibur) {
+        if (player_system.is7Calibur) {
             Destroy (this.gameObject);
         }
     }

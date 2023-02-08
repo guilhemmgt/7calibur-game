@@ -19,7 +19,7 @@ public class Player_System : MonoBehaviour {
     // Tower
     public int Tower;
 
-    void Update () {
+    private void Update () {
         // Score
 
         height = transform.position.y;
