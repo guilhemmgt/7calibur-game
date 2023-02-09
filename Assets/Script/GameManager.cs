@@ -28,6 +28,27 @@ public class GameManager : MonoBehaviour {
         Menu ();
     }
 
+    private void ResetGame () {
+        towerGen.GenerateTower ();
+        ResetPlayer ();
+        ResetDragon ();
+    }
+
+    private void ResetPlayer () {
+        player_movement.transform.position = posPlayer; // Position
+        player_movement.jump = 7; // Sauts
+        player.GetComponent<Rigidbody2D> ().velocity = Vector3.zero; // Vélocité
+        player_movement.is7Calibur = false;
+    }
+
+    private void ResetDragon () {
+        Dragon.transform.position = posDragon; // Position
+    }
+
+    //
+    // J'ai fais 150 fonctions spécifiques en dessous pcq ça sera + pratique, surtout quand on rajoutera des boutons style "retour au menu principal" etc
+    //
+
     // Lancer le menu
     public void Menu () {
         // Pause
@@ -73,22 +94,5 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0;
 
         uiManager.OpenGameOverUI ();
-    }
-
-    private void ResetGame () {
-        towerGen.GenerateTower ();
-        ResetPlayer ();
-        ResetDragon ();
-    }
-
-    private void ResetPlayer () {
-        player_movement.transform.position = posPlayer; // Position
-        player_movement.jump = 7; // Sauts
-        player.GetComponent<Rigidbody2D> ().velocity = Vector3.zero; // Vélocité
-        player_movement.is7Calibur = false;
-    }
-
-    private void ResetDragon () {
-        Dragon.transform.position = posDragon; // Position
     }
 }
