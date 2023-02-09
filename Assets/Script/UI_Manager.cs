@@ -16,11 +16,13 @@ public class UI_Manager : MonoBehaviour {
     public Text Text_Tower;
     public Text Text_Jump;
 
-    // Menu
-    public GameObject menuPause;
-    public GameObject menuOver;
-    public GameObject menuStart;
-    public GameObject menuIG;
+    // UI
+    public GameObject pauseUI;
+    public GameObject gameOverUI;
+    public GameObject menuUI;
+    public GameObject gameUI;
+    // UI active (parmi les UI ci-dessus)
+    private GameObject activeUI;
 
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
@@ -30,55 +32,61 @@ public class UI_Manager : MonoBehaviour {
 
     private void Update () {
         // Score 
-
         Text_Score.text = "Score : " + (int)player_system.Score;
         Text_Tower.text = "Tower : " + (int)player_system.Tower;
 
         // Jump 
-
         if (player_Movement.jump > 0) {
             Text_Jump.text = "Jump : " + player_Movement.jump;
         } else {
             Text_Jump.text = "Jump : " + 0;
         }
 
-
-        // Menu Pause
-
-        if (Input.GetKeyDown (KeyCode.Escape) && gameManager.isLaunch) {
-            if (gameManager.isPaused) {
-                Time.timeScale = 1f;
-                gameManager.isPaused = false;
-                menuPause.SetActive (false);
-            } else {
-                Time.timeScale = 0f;
-                gameManager.isPaused = true;
-                menuPause.SetActive (true);
+        // Gestion des inputs selon l'UI ouverte
+        if (activeUI == pauseUI) { // UI pause
+            if (Input.GetKeyDown (KeyCode.Escape)) {
+                gameManager.Play ();
+            }
+        } else if (activeUI == gameOverUI) { // UI Game Over
+            if ((Input.anyKey)) {
+                gameManager.ReplayAfterGameOver ();
+            }
+        } else if (activeUI == gameUI) { // UI Jeu
+            if (Input.GetKeyDown (KeyCode.Escape)) {
+                gameManager.Pause ();
+            }
+        } else if (activeUI == menuUI) { // UI Menu
+            if ((Input.anyKey)) {
+                gameManager.Play ();
             }
         }
-
-
-        // Menu Over
-
-        if (player_system.isOver) {
-            Time.timeScale = 0f;
-            menuOver.SetActive (player_system.isOver);
-        }
-
-        if ((Input.anyKey) && player_system.isOver) {
-            player_system.maxheight = 0f;
-            gameManager.Launch ();
-        }
-
-        // Menu Start
-
-        if (!gameManager.isLaunch) {
-            Time.timeScale = 0f;
-            menuStart.SetActive (!gameManager.isLaunch);
-        }
-
-        if ((Input.anyKey) && !gameManager.isLaunch) {
-            gameManager.Setup ();
-        }
     }
+
+    // Ouvre une UI et ferme toutes les autres
+    private void SelectUI (GameObject menu) {
+        pauseUI.SetActive (false);
+        gameOverUI.SetActive (false);
+        menuUI.SetActive (false);
+        gameUI.SetActive (false);
+
+        menu.SetActive (true);
+        activeUI = menu;
+    }
+
+    // Ouvre le menu principal
+    public void OpenMenuUI () {
+        SelectUI (menuUI);
+	}
+    // Ouvre la pause
+    public void OpenPauseUI () {
+        SelectUI (pauseUI);
+	}
+    // Ouvre l'interface de jeu
+    public void OpenGameUI () {
+        SelectUI (gameUI);
+	}
+    // Ouvre l'écran de mort
+    public void OpenGameOverUI () {
+        SelectUI (gameOverUI);
+	}
 }

@@ -18,7 +18,7 @@ public class Spiky : MonoBehaviour
 
         if (other.gameObject.tag == ("Player"))
         {
-            player_System.isOver = true;
+            //player_System.isOver = true;
         }
     }
 }

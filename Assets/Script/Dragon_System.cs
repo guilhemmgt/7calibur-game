@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dragon_System : MonoBehaviour {
     // Reference 
     // Joueur
-    private Player_System player_System;
+    private Player_Movement player_mvt;
     // GameManager
     private GameManager gameManager;
 
@@ -15,12 +15,12 @@ public class Dragon_System : MonoBehaviour {
 
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-        player_System = gameManager.player.GetComponent<Player_System> ();
+        player_mvt = gameManager.player.GetComponent<Player_Movement> ();
     }
 
 
     private void Update () {
-        if (!player_System.is7Calibur) {
+        if (!player_mvt.is7Calibur) {
             transform.position += Vector3.up * speed * Time.deltaTime;
         }
     }
@@ -29,10 +29,10 @@ public class Dragon_System : MonoBehaviour {
         if (other.tag != "Player")
             return;
 
-        if (player_System.is7Calibur) {
-            gameManager.Same_Tower (); // Slain
+        if (player_mvt.is7Calibur) {
+            gameManager.ReplayAfterWin (); // Slain
         } else {
-            player_System.isOver = true; // Game Over
+            gameManager.GameOver (); // Game Over
         }
     }
 }

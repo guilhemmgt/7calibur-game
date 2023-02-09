@@ -7,14 +7,9 @@ public class Player_System : MonoBehaviour {
     public float Score;
     public float OldScore;
     public float NewScore;
-    public float FallScore;
     public float ClimbScore;
     public float height;
     public float maxheight = 0;
-
-    // Etats
-    public bool isOver = false;
-    public bool is7Calibur = false;
 
     // Tower
     public int Tower;
@@ -29,7 +24,7 @@ public class Player_System : MonoBehaviour {
         }
 
         // Spagetti code pour regler un bug sur le reset du score à la mort (mais si on abandonne le score osef)
-        if (height < 2 && !is7Calibur) {
+        if (height < 2 && !GetComponent<Player_Movement>().is7Calibur) {
             maxheight = 0f;
         }
 
@@ -40,4 +35,13 @@ public class Player_System : MonoBehaviour {
 
         NewScore = ClimbScore;
     }
+
+    public void ResetScore () {
+        Score = 0;
+        OldScore = 0;
+        NewScore = 0;
+        ClimbScore = 0;
+
+        Tower = 1;
+	}
 }

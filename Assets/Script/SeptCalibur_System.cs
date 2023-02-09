@@ -22,10 +22,10 @@ public class SeptCalibur_System : MonoBehaviour {
             return;
 
         if (other.GetComponent<Rigidbody2D> ().velocity.y <= 0) {
-            Player_System player_sys = other.GetComponent<Player_System> ();
+            Player_Movement player_mvt = other.GetComponent<Player_Movement> ();
 
             // Etats
-            player_sys.is7Calibur = true;
+            player_mvt.is7Calibur = true;
 
             // Dragon
             dragon_system.transform.position = gameManager.posDragon;

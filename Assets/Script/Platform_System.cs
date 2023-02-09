@@ -5,18 +5,18 @@ using UnityEngine;
 public class Platform_System : MonoBehaviour {
     // Reference
     // Joueur
-    private Player_System player_system;
+    private Player_Movement player_mvt;
 
     // Composants
     private Collider2D coll;
 
     private void Awake () {
         coll = GetComponent<EdgeCollider2D> ();
-        player_system = GameObject.Find ("GameManager").GetComponent<GameManager> ().player.GetComponent<Player_System> ();
+        player_mvt = GameObject.Find ("GameManager").GetComponent<GameManager> ().player.GetComponent<Player_Movement> ();
     }
 
     private void Update () {
-        coll.isTrigger = player_system.is7Calibur;
+        coll.isTrigger = player_mvt.is7Calibur;
     }
 
     // Score Descente
@@ -24,7 +24,7 @@ public class Platform_System : MonoBehaviour {
         if (other.tag != "Player")
             return;
 
-        if (player_system.is7Calibur) {
+        if (player_mvt.is7Calibur) {
             Destroy (this.gameObject);
         }
     }

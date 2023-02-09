@@ -1004,10 +1004,10 @@ MonoBehaviour:
   Text_Score: {fileID: 1416509199}
   Text_Tower: {fileID: 50435875}
   Text_Jump: {fileID: 1131013120}
-  menuPause: {fileID: 179811920}
-  menuOver: {fileID: 363039345}
-  menuStart: {fileID: 703874556}
-  menuIG: {fileID: 554709189}
+  pauseUI: {fileID: 179811920}
+  gameOverUI: {fileID: 363039345}
+  menuUI: {fileID: 703874556}
+  gameUI: {fileID: 554709189}
 --- !u!4 &808862979
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,6 +1415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1150847598}
   - component: {fileID: 1150847599}
+  - component: {fileID: 1150847600}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1451,15 +1452,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1494974163}
   Dragon: {fileID: 3102336713947887488}
-  Ground: {fileID: 4381690925230549822, guid: 83f4e5316a43b174cb16a1980df56bbe, type: 3}
-  Top: {fileID: 1055431488163793443, guid: 77c30980deef7f441bd2bcfd10a4fb4d, type: 3}
-  sword: {fileID: 8544927621443471055, guid: cd7fcab7f0e126041b62abd0981b68d6, type: 3}
-  platform: {fileID: 1843655373487153769, guid: 3913dcbd12d006043b114eae524d7888,
-    type: 3}
-  isLaunch: 0
-  isPaused: 0
-  posPlayer: {x: 0, y: 2, z: 0}
+  posPlayer: {x: 0, y: 0.681, z: 0}
   posDragon: {x: 0, y: -70, z: 0}
+--- !u!114 &1150847600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150847595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab5b60a796b6994097d4a5530fecb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundPlateformPrefab: {fileID: 4381690925230549822, guid: 83f4e5316a43b174cb16a1980df56bbe,
+    type: 3}
+  topPlateformPrefab: {fileID: 1055431488163793443, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+    type: 3}
+  plateformPrefab: {fileID: 1843655373487153769, guid: 3913dcbd12d006043b114eae524d7888,
+    type: 3}
+  swordPrefab: {fileID: 8544927621443471055, guid: cd7fcab7f0e126041b62abd0981b68d6,
+    type: 3}
   posGround: {x: 0, y: 0, z: 0}
   posTop: {x: 0, y: 99, z: 0}
   spawn_number: 49
@@ -1620,6 +1634,7 @@ MonoBehaviour:
   verticalWallBounce: 14
   horizontalSlide: 6
   jump: 7
+  is7Calibur: 0
 --- !u!50 &1494974165
 Rigidbody2D:
   serializedVersion: 4
@@ -1701,7 +1716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494974163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 1.96, z: 0}
+  m_LocalPosition: {x: 0, y: 0.681, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1724,12 +1739,9 @@ MonoBehaviour:
   Score: 0
   OldScore: 0
   NewScore: 0
-  FallScore: 0
   ClimbScore: 0
   height: 0
   maxheight: 0
-  isOver: 0
-  is7Calibur: 0
   Tower: 1
 --- !u!61 &1494974170
 BoxCollider2D:

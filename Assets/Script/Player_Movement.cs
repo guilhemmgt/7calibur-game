@@ -18,6 +18,7 @@ public class Player_Movement : MonoBehaviour {
     private bool isBroken = false; // Épée brisée (plus de sauts)
     private bool canWallJump = true; // Peut walljump
     private float xInput = 0; // Input directionnel (-1, 0, 1)
+    public bool is7Calibur = false;
 
 
     private void Awake () {
@@ -43,7 +44,7 @@ public class Player_Movement : MonoBehaviour {
 
     public void OnFeetCollisionStay (Collision2D other) {
         // Si plus d'épée ou en fin de niveau, plus de saut possible
-        if (isBroken || player_system.is7Calibur)
+        if (isBroken || is7Calibur)
             return;
 
         // Jump si on rebondit sur une plateforme
