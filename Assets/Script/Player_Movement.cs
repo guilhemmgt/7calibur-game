@@ -12,6 +12,7 @@ public class Player_Movement : MonoBehaviour {
     private Player_System player_system;
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     // Déplacement
     public int jump = 7; // Nombre de sauts restants
@@ -25,17 +26,24 @@ public class Player_Movement : MonoBehaviour {
         body = GetComponent<Rigidbody2D> ();
         spriteRenderer = GetComponent<SpriteRenderer> ();
         player_system = GetComponent<Player_System> ();
+        animator = GetComponent<Animator> ();
     }
 
     private void Update () {
+
         isBroken = jump <= 0;
 
+        // Graphisme
+
+        // Flip
         if (body.velocity.x > 0f) {
             spriteRenderer.flipX = true;
         }
         if (body.velocity.x < 0f) {
             spriteRenderer.flipX = false;
         }
+        // Animation
+        animator.SetBool("isBroken", isBroken);
     }
 
     private void FixedUpdate () {
@@ -62,8 +70,10 @@ public class Player_Movement : MonoBehaviour {
 
 	private void Jump (float force) {
         body.velocity = new Vector2 (0, force);
-
         jump -= 1;
+
+        // Animation
+        animator.SetTrigger("Jump");
     }
 
     // Appelé par l'UI

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerGeneration : MonoBehaviour {
-    // Préfabs
+    // Prï¿½fabs
     // Plateformes
     public GameObject groundPlateformPrefab;
     public GameObject topPlateformPrefab;
@@ -11,24 +11,24 @@ public class TowerGeneration : MonoBehaviour {
     // Items
     public GameObject swordPrefab;
 
-    // Parent des plateformes et items générés dans la tour
+    // Parent des plateformes et items generes dans la tour
     private Transform towerContent;
 
     // Position
     public Vector3 posGround;
     public Vector3 posTop;
 
-    // Paramètres de spawn
+    // Paramï¿½tres de spawn
     // Item
-    public int spawn_number = 300;  // Combien d'entités apparaissent
+    public int spawn_number = 300;  // Combien d'entitï¿½s apparaissent
     public int Frequence_Sword;     // Rand(0..100) < Frequence_Sword => Spawn Sword
     // Borne Hauteur de Spawn
     public float Min_H;
     public float Max_H;
-    // [Epee] Borne Largeur de Spawn Par rapport à la plateforme
+    // [Epee] Borne Largeur de Spawn Par rapport a la plateforme
     public float Sword_Min_L;
     public float Sword_Max_L;
-    // [Epee] Borne Hauteur de Spawn Par rapport à la plateforme
+    // [Epee] Borne Hauteur de Spawn Par rapport a la plateforme
     public float Sword_Min_H;
     public float Sword_Max_H;
     // [Plateforme] Borne Largeur de Spawn
@@ -47,15 +47,15 @@ public class TowerGeneration : MonoBehaviour {
         }
     }
 
-    // Regénère une nouvelle tour
+    // Regenere une nouvelle tour
     public void GenerateTower () {
         CleanTower ();
 
-        // Instancie les plateformes de départ et d'arrivée
+        // Instancie les plateformes de dï¿½part et d'arrivï¿½e
         Instantiate (topPlateformPrefab, posTop, Quaternion.identity, towerContent);
         Instantiate (groundPlateformPrefab, posGround, Quaternion.identity, towerContent);
 
-        // Instancie aléatoirement les plateformes et les items
+        // Instancie alï¿½atoirement les plateformes et les items
         Vector3 spawn_position = new Vector3 ();
         for (int i = 0; i < spawn_number; i++) {
             spawn_position.y += Random.Range (Min_H, Max_H);
@@ -68,17 +68,24 @@ public class TowerGeneration : MonoBehaviour {
         // Instanciation de la plateforme
         Instantiate (plateformPrefab, position, Quaternion.identity, towerContent);
 
-        // A une chance de spawn une épée
+        // A une chance de spawn une epee
         if (Random.Range (0, 100) <= Frequence_Sword) {
-            // Position de l'épée
+            
+            // Position de l'epee
             float xRandomTranslation = Random.Range (Sword_Min_L, Sword_Max_L);
             float yRandomTranslation = Random.Range (Sword_Min_H, Sword_Max_H);
-            Vector3 swordPosition = position + new Vector3 (xRandomTranslation, yRandomTranslation, 0);
-            // Instanciation de l'épée
+            Vector3 swordPosition = position + new Vector3 (xRandomTranslation, yRandomTranslation, 0f);
+           
+            // Instanciation de l'epee
             Transform newSword = Instantiate (swordPrefab, swordPosition, Quaternion.identity, towerContent).transform;
-            // Rotation de l'épée
+            
+            // Rotation de l'epee
             float swordAngle = Random.Range (-50f, 50f);
             newSword.Rotate (0, 0, swordAngle, Space.World);
+            // Empecher le dÃ©passement (un peu bourrin) 
+            if (Mathf.Abs(swordAngle)< 30){
+                newSword.transform.position += new Vector3 (0f, 0.2f, 0f);
+            }
         }
     }
 }
