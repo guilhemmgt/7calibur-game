@@ -18,7 +18,6 @@ public class SeptCalibur_System : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         dragon_system = gameManager.Dragon.GetComponent<Dragon_System> ();
         animator = GetComponent<Animator> ();
-
     }
 
     private void OnTriggerEnter2D (Collider2D other) {

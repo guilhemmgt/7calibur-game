@@ -15,6 +15,7 @@ public class UI_Manager : MonoBehaviour {
     public Text Text_Score;
     public Text Text_Tower;
     public Text Text_Jump;
+    public Text Text_Score_Over;
 
     // UI
     public GameObject pauseUI;
@@ -32,7 +33,8 @@ public class UI_Manager : MonoBehaviour {
 
     private void Update () {
         // Score 
-        Text_Score.text = "Score : " + (int)player_system.Score;
+        Text_Score.text = "Score : " + (int)player_system.score;
+        Text_Score_Over.text = "Score : " + (int)player_system.score;
         Text_Tower.text = "Tower : " + (int)player_system.Tower;
 
         // Jump 
@@ -48,7 +50,7 @@ public class UI_Manager : MonoBehaviour {
                 gameManager.Play ();
             }
         } else if (activeUI == gameOverUI) { // UI Game Over
-            if ((Input.anyKey)) {
+            if ((Input.anyKeyDown)) {
                 gameManager.ReplayAfterGameOver ();
             }
         } else if (activeUI == gameUI) { // UI Jeu
@@ -56,7 +58,7 @@ public class UI_Manager : MonoBehaviour {
                 gameManager.Pause ();
             }
         } else if (activeUI == menuUI) { // UI Menu
-            if ((Input.anyKey)) {
+            if ((Input.anyKeyDown)) {
                 gameManager.Play ();
             }
         }

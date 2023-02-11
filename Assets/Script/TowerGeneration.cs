@@ -8,8 +8,7 @@ public class TowerGeneration : MonoBehaviour {
     public GameObject groundPlateformPrefab;
     public GameObject topPlateformPrefab;
     public GameObject plateformPrefab;
-    // Items
-    public GameObject swordPrefab;
+
 
     // Parent des plateformes et items generes dans la tour
     private Transform towerContent;
@@ -21,19 +20,38 @@ public class TowerGeneration : MonoBehaviour {
     // Param�tres de spawn
     // Item
     public int spawn_number = 300;  // Combien d'entit�s apparaissent
-    public int Frequence_Sword;     // Rand(0..100) < Frequence_Sword => Spawn Sword
+
     // Borne Hauteur de Spawn
-    public float Min_H;
-    public float Max_H;
-    // [Epee] Borne Largeur de Spawn Par rapport a la plateforme
-    public float Sword_Min_L;
-    public float Sword_Max_L;
-    // [Epee] Borne Hauteur de Spawn Par rapport a la plateforme
-    public float Sword_Min_H;
-    public float Sword_Max_H;
+    public float platformMinH;
+    public float platformMaxH;
     // [Plateforme] Borne Largeur de Spawn
-    public float Platform_Min_L;
-    public float Platform_Max_L;
+    public float platformMinL;
+    public float platformMaxL;
+
+    // Items
+    // Épée
+    [Header ("Épée")]
+    public GameObject swordPrefab;
+    public int swordFrequence;
+    // Borne Largeur de Spawn Par rapport a la plateforme
+    public float swordMinL;
+    public float swordMaxL;
+    // Borne Hauteur de Spawn Par rapport a la plateforme
+    public float swordMinH;
+    public float swordMaxH;
+
+    // Pièce
+    [Header ("Pièce")]
+    public GameObject coinPrefab;
+    public int coinFrequence;
+    public float coinH; // Hauteur de spawn par rapport à la plateforme
+
+    // Piques
+    [Header ("Piques")]
+    public GameObject spikesPrefab;
+    public int spikesFrequence;
+    public float spikesH;
+
 
 
 	private void Awake () {
@@ -58,34 +76,65 @@ public class TowerGeneration : MonoBehaviour {
         // Instancie al�atoirement les plateformes et les items
         Vector3 spawn_position = new Vector3 ();
         for (int i = 0; i < spawn_number; i++) {
-            spawn_position.y += Random.Range (Min_H, Max_H);
-            spawn_position.x = Random.Range (Platform_Min_L, Platform_Max_L);
+            spawn_position.y += Random.Range (platformMinH, platformMaxH);
+            spawn_position.x = Random.Range (platformMinL, platformMaxL);
             SpawnPlatform (spawn_position);
         }
     }
 
     private void SpawnPlatform (Vector3 position) {
         // Instanciation de la plateforme
-        Instantiate (plateformPrefab, position, Quaternion.identity, towerContent);
+        Transform newPlatform = Instantiate (plateformPrefab, position, Quaternion.identity, towerContent).transform;
 
-        // A une chance de spawn une epee
-        if (Random.Range (0, 100) <= Frequence_Sword) {
-            
-            // Position de l'epee
-            float xRandomTranslation = Random.Range (Sword_Min_L, Sword_Max_L);
-            float yRandomTranslation = Random.Range (Sword_Min_H, Sword_Max_H);
-            Vector3 swordPosition = position + new Vector3 (xRandomTranslation, yRandomTranslation, 0f);
-           
-            // Instanciation de l'epee
-            Transform newSword = Instantiate (swordPrefab, swordPosition, Quaternion.identity, towerContent).transform;
-            
-            // Rotation de l'epee
-            float swordAngle = Random.Range (-50f, 50f);
-            newSword.Rotate (0, 0, swordAngle, Space.World);
-            // Empecher le dépassement (un peu bourrin) 
-            if (Mathf.Abs(swordAngle)< 30){
-                newSword.transform.position += new Vector3 (0f, 0.2f, 0f);
-            }
-        }
+        // Code caca pas beau, je referais avec des scriptableobjects je pense
+        GameObject[] items = new GameObject[] { coinPrefab, swordPrefab, spikesPrefab };
+        int[] frequences = new int[] { coinFrequence, swordFrequence, spikesFrequence };
+        GameObject itemToSpawn = null;
+        int somme = 0;
+        for (int i = 0; i < items.Length; i++) {
+            somme += frequences[i];
+            if (Random.Range (0, 100) < somme) {
+                itemToSpawn = items[i];
+                break;
+			}
+		}
+        if (itemToSpawn == coinPrefab)
+            SpawnCoin (newPlatform);
+        else if (itemToSpawn == swordPrefab)
+            SpawnSword (newPlatform);
+        else if (itemToSpawn == spikesPrefab)
+            SpawnSpikes (newPlatform);
+    }
+
+    private void SpawnSword (Transform platform) {
+        // Position de l'epee
+        float xRandomTranslation = Random.Range (swordMinL, swordMaxL);
+        float yRandomTranslation = Random.Range (swordMinH, swordMaxH);
+        Vector3 position = platform.position + new Vector3 (xRandomTranslation, yRandomTranslation, 0f);
+
+        // Instanciation de l'epee
+        Transform newSword = Instantiate (swordPrefab, position, Quaternion.identity, platform).transform;
+
+        // Rotation de l'epee
+        float swordAngle = Random.Range (-50f, 50f);
+        newSword.Rotate (0, 0, swordAngle, Space.World);
+    }
+
+    private void SpawnCoin (Transform platform) {
+        // Position de la pièce
+        float xRandomTranslation = Random.Range (swordMinL, swordMaxL);
+        Vector3 position = platform.position + new Vector3 (xRandomTranslation, coinH, 0f);
+
+        // Instanciation de la pièce
+        Instantiate (coinPrefab, position, Quaternion.identity, platform);
+    }
+
+    private void SpawnSpikes (Transform platform) {
+        // Position des piques
+        float xRandomTranslation = Random.Range (swordMinL, swordMaxL);
+        Vector3 position = platform.position + new Vector3 (xRandomTranslation, spikesH, 0f);
+
+        // Instanciation des piques
+        Instantiate (spikesPrefab, position, Quaternion.identity, platform);
     }
 }

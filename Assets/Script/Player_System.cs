@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player_System : MonoBehaviour {
     // Score
-    public float Score;
-    public float OldScore;
-    public float NewScore;
-    public float ClimbScore;
+    public float score;
+    public float oldScore;
+    public float newScore;
+    public float climbScore;
     public float height;
     public float maxheight = 0;
 
@@ -17,31 +17,40 @@ public class Player_System : MonoBehaviour {
     private void Update () {
         // Score
 
-        height = transform.position.y;
+        //height = transform.position.y;
 
-        if (height > maxheight && height <= 101f) {
-            maxheight = height;
-        }
+        //if (height > maxheight && height <= 101f) {
+        //    maxheight = height;
+        //}
 
-        // Spagetti code pour regler un bug sur le reset du score à la mort (mais si on abandonne le score osef)
-        if (height < 2 && !GetComponent<Player_Movement>().is7Calibur) {
-            maxheight = 0f;
-        }
+        //// Spagetti code pour regler un bug sur le reset du score à la mort (mais si on abandonne le score osef)
+        //if (height < 2 && !GetComponent<Player_Movement>().is7Calibur) {
+        //    maxheight = 0f;
+        //}
 
-        // Montee
-        ClimbScore = maxheight;
+        //// Montee
+        //climbScore = maxheight;
 
-        Score = OldScore + NewScore;
+        //score = oldScore + newScore;
 
-        NewScore = ClimbScore;
+        //newScore = climbScore;
     }
 
     public void ResetScore () {
-        Score = 0;
-        OldScore = 0;
-        NewScore = 0;
-        ClimbScore = 0;
+        score = 0;
+        oldScore = 0;
+        newScore = 0;
+        climbScore = 0;
 
         Tower = 1;
+	}
+
+    public void AddScore (int amount) {
+        score += amount;
+	}
+
+    public void AddTower () {
+        Tower += 1;
+        AddScore (100);
 	}
 }

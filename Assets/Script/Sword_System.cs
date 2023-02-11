@@ -8,7 +8,7 @@ public class Sword_System : MonoBehaviour {
         if (other.tag != "Player")
             return;
 
-        if (other.GetComponent<Rigidbody2D> ().velocity.y <= 0) {
+        if (other.transform.position.y >= transform.position.y) {
             other.GetComponent<Player_Movement> ().jump = 7;
 
             Destroy (gameObject);

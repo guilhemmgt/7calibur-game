@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ResetGame () {
+        player_movement.Move (0);
         towerGen.GenerateTower ();
         ResetPlayer ();
         ResetDragon ();
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour {
     public void ReplayAfterWin () {
         // Réinitialisation
         ResetGame ();
+        player_system.AddTower ();
         // Jeu
         Play ();
     }

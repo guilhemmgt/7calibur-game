@@ -9,7 +9,6 @@ public class Player_Movement : MonoBehaviour {
     public float horizontalSlide; // Vitesse du déplacement
 
     // Composants
-    private Player_System player_system;
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -25,7 +24,6 @@ public class Player_Movement : MonoBehaviour {
     private void Awake () {
         body = GetComponent<Rigidbody2D> ();
         spriteRenderer = GetComponent<SpriteRenderer> ();
-        player_system = GetComponent<Player_System> ();
         animator = GetComponent<Animator> ();
     }
 
