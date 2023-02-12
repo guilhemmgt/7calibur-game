@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,10 @@ public class UI_Manager : MonoBehaviour {
     private Player_System player_system;
 
     // Texte
-    public Text Text_Score;
-    public Text Text_Tower;
-    public Text Text_Jump;
-    public Text Text_Score_Over;
+    public TextMeshProUGUI Text_Score;
+    public TextMeshProUGUI Text_Tower;
+    public TextMeshProUGUI Text_Jump;
+    public TextMeshProUGUI Text_Score_Over;
 
     // UI
     public GameObject pauseUI;
@@ -51,7 +52,7 @@ public class UI_Manager : MonoBehaviour {
             }
         } else if (activeUI == gameOverUI) { // UI Game Over
             if ((Input.anyKeyDown)) {
-                gameManager.ReplayAfterGameOver ();
+                //gameManager.ReplayAfterGameOver ();
             }
         } else if (activeUI == gameUI) { // UI Jeu
             if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -59,7 +60,7 @@ public class UI_Manager : MonoBehaviour {
             }
         } else if (activeUI == menuUI) { // UI Menu
             if ((Input.anyKeyDown)) {
-                gameManager.Play ();
+                //gameManager.Play ();
             }
         }
     }

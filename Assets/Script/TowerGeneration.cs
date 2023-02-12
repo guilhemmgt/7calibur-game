@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerGeneration : MonoBehaviour {
-    // Pr�fabs
-    public GameObject groundPlateformPrefab;
-    public GameObject topPlateformPrefab;
-    public GameObject plateformPrefab;
+    // Préfabs de plateformes
+    private GameObject groundPlateformPrefab;
+    private GameObject topPlateformPrefab;
+    private GameObject plateformPrefab;
+    private GameObject topSwordPrefab;
 
-    // Position
-    public Vector3 posGround;
-    public Vector3 posTop;
 
-    // Param�tres de spawn
-    // Item
-    public int spawn_number;  // Combien d'entit�s apparaissent
+    // Parent des plateformes, items, tour instanciées
+    private Transform towerContent;
+    private Transform themeContent;
 
     // Tours
-    [Header ("Tours")]
-    public List<GameObject> towerThemePrefabs = new List<GameObject> ();
-    public List<int> towerThemeFrequences = new List<int> ();
+    [Header ("Themes")]
+    public List<Theme> towerThemes = new List<Theme> ();
 
     // Plateformes
     [Header ("Plateformes")]
@@ -29,6 +26,12 @@ public class TowerGeneration : MonoBehaviour {
     // Borne Largeur de Spawn
     public float platformMinL;
     public float platformMaxL;
+    // Nombre de plateformes
+    public int spawn_number;
+    // Position des plateformes de début et de fin
+    public Vector3 groundPlatformPos;
+    public Vector3 topPlatformPos;
+    public Vector3 topSwordPos;
 
     // Items
     // /!\ La somme des fréquences de spawn ne doit pas dépasser 100 sinon c'est complètement con /!\
@@ -55,14 +58,10 @@ public class TowerGeneration : MonoBehaviour {
     public int spikesFrequence;
     public float spikesH;
 
-    // Parent des plateformes et items generes dans la tour
-    private Transform towerContent;
-    private Transform towerTheme;
-
 
     private void Awake () {
         towerContent = GameObject.Find ("TowerContent").transform;
-        towerTheme = GameObject.Find ("TowerTheme").transform;
+        themeContent = GameObject.Find ("ThemeContent").transform;
 	}
 
     // Supprime toutes les plateformes et items
@@ -72,32 +71,38 @@ public class TowerGeneration : MonoBehaviour {
         }
     }
 
-    private void GenerateTowerTheme () {
-        foreach (Transform child in towerTheme) {
+    // Applique un thème
+    private void SetTheme (Theme newTheme) {
+        // Détruit l'éventuel prefab de tour déjà instancié
+        foreach (Transform child in themeContent) {
             Destroy (child.gameObject);
         }
+        // Remplace les préfabs des plateformes
+        plateformPrefab = newTheme.platform;
+        groundPlateformPrefab = newTheme.groundPlatform;
+        topPlateformPrefab = newTheme.topPlatform;
+        topSwordPrefab = newTheme.topSword;
+        // Instancie la nouvelle tour
+        Instantiate (newTheme.tower, themeContent);
+    }
 
-        GameObject newTheme = null;
-        int somme = 0;
-        for (int i = 0; i < towerThemeFrequences.Count; i++) {
-            somme += towerThemeFrequences[i];
-            if (Random.Range (0, 100) < somme) {
-                newTheme = towerThemePrefabs[i];
-                break;
-            }
-        }
-
-        Instantiate (newTheme, towerTheme);
+    // Règles pour choisir un thème
+    private void ChooseTheme () {
+        // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
+        // ou des tours spéciales en fonction de la progression du joueur
+        int themeIndex = Random.Range (0, towerThemes.Count);
+        SetTheme (towerThemes[themeIndex]);
     }
 
     // Regenere une nouvelle tour
     public void GenerateTower () {
         CleanTowerContent ();
-        GenerateTowerTheme ();
+        ChooseTheme ();
 
         // Instancie les plateformes de d�part et d'arriv�e
-        Instantiate (topPlateformPrefab, posTop, Quaternion.identity, towerContent);
-        Instantiate (groundPlateformPrefab, posGround, Quaternion.identity, towerContent);
+        Instantiate (topPlateformPrefab, topPlatformPos, Quaternion.identity, towerContent);
+        Instantiate (groundPlateformPrefab, groundPlatformPos, Quaternion.identity, towerContent);
+        Instantiate (topSwordPrefab, topSwordPos, Quaternion.identity, towerContent);
 
         // Instancie al�atoirement les plateformes et les items
         Vector3 spawn_position = new Vector3 ();
