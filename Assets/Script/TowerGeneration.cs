@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class TowerGeneration : MonoBehaviour {
     // Pr�fabs
-    // Plateformes
     public GameObject groundPlateformPrefab;
     public GameObject topPlateformPrefab;
     public GameObject plateformPrefab;
-
-
-    // Parent des plateformes et items generes dans la tour
-    private Transform towerContent;
 
     // Position
     public Vector3 posGround;
@@ -19,16 +14,24 @@ public class TowerGeneration : MonoBehaviour {
 
     // Param�tres de spawn
     // Item
-    public int spawn_number = 300;  // Combien d'entit�s apparaissent
+    public int spawn_number;  // Combien d'entit�s apparaissent
 
+    // Tours
+    [Header ("Tours")]
+    public List<GameObject> towerThemePrefabs = new List<GameObject> ();
+    public List<int> towerThemeFrequences = new List<int> ();
+
+    // Plateformes
+    [Header ("Plateformes")]
     // Borne Hauteur de Spawn
     public float platformMinH;
     public float platformMaxH;
-    // [Plateforme] Borne Largeur de Spawn
+    // Borne Largeur de Spawn
     public float platformMinL;
     public float platformMaxL;
 
     // Items
+    // /!\ La somme des fréquences de spawn ne doit pas dépasser 100 sinon c'est complètement con /!\
     // Épée
     [Header ("Épée")]
     public GameObject swordPrefab;
@@ -52,22 +55,45 @@ public class TowerGeneration : MonoBehaviour {
     public int spikesFrequence;
     public float spikesH;
 
+    // Parent des plateformes et items generes dans la tour
+    private Transform towerContent;
+    private Transform towerTheme;
 
 
-	private void Awake () {
+    private void Awake () {
         towerContent = GameObject.Find ("TowerContent").transform;
+        towerTheme = GameObject.Find ("TowerTheme").transform;
 	}
 
     // Supprime toutes les plateformes et items
-	private void CleanTower () {
+	private void CleanTowerContent () {
         foreach (Transform child in towerContent) {
             Destroy (child.gameObject);
         }
     }
 
+    private void GenerateTowerTheme () {
+        foreach (Transform child in towerTheme) {
+            Destroy (child.gameObject);
+        }
+
+        GameObject newTheme = null;
+        int somme = 0;
+        for (int i = 0; i < towerThemeFrequences.Count; i++) {
+            somme += towerThemeFrequences[i];
+            if (Random.Range (0, 100) < somme) {
+                newTheme = towerThemePrefabs[i];
+                break;
+            }
+        }
+
+        Instantiate (newTheme, towerTheme);
+    }
+
     // Regenere une nouvelle tour
     public void GenerateTower () {
-        CleanTower ();
+        CleanTowerContent ();
+        GenerateTowerTheme ();
 
         // Instancie les plateformes de d�part et d'arriv�e
         Instantiate (topPlateformPrefab, posTop, Quaternion.identity, towerContent);
@@ -87,6 +113,7 @@ public class TowerGeneration : MonoBehaviour {
         Transform newPlatform = Instantiate (plateformPrefab, position, Quaternion.identity, towerContent).transform;
 
         // Code caca pas beau, je referais avec des scriptableobjects je pense
+        // En gros on choisit aléatoirement l'objet qu'on va spawn sur cette plateform :
         GameObject[] items = new GameObject[] { coinPrefab, swordPrefab, spikesPrefab };
         int[] frequences = new int[] { coinFrequence, swordFrequence, spikesFrequence };
         GameObject itemToSpawn = null;

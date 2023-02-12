@@ -21,7 +21,7 @@ public class Spikes : MonoBehaviour {
 		if (other.tag != "Player")
 			return;
 
-		if (other.transform.position.y >= transform.position.y && !player_mvt.is7Calibur) {
+		if (other.transform.position.y >= transform.position.y - 0.09f && !player_mvt.is7Calibur) {
 			gameManager.GameOver ();
 		}
 	}
