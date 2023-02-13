@@ -28,7 +28,6 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void Update () {
-
         isBroken = jump <= 0;
 
         // Graphisme
@@ -41,7 +40,17 @@ public class Player_Movement : MonoBehaviour {
             spriteRenderer.flipX = false;
         }
         // Animation
-        animator.SetBool("isBroken", isBroken);
+        animator.SetBool ("isBroken", isBroken);
+
+        // Controles claviers
+        if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Q))
+            PressLeft ();
+        if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.Q))
+            ReleaseLeft ();
+        if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D))
+            PressRight ();
+        if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.D))
+            ReleaseRight ();
     }
 
     private void FixedUpdate () {
@@ -51,12 +60,16 @@ public class Player_Movement : MonoBehaviour {
     public void OnFeetCollisionStay (Collision2D other) {
         // Si plus d'épée ou en fin de niveau, plus de saut possible
         if (isBroken || is7Calibur)
-            return;
+			return;
 
-        // Jump si on rebondit sur une plateforme
-        if (body.velocity.y <= 0 && (other.transform.tag == "Platform" || other.transform.tag == "GroundPlatform")) {
-            Jump (verticalBounce);
-            canWallJump = true;
+		// Jump si on rebondit sur une plateforme
+		if (body.velocity.y <= 0 && (other.transform.tag == "Platform" || other.transform.tag == "GroundPlatform")) {
+			Jump (verticalBounce);
+			canWallJump = true;
+		}
+        // Ne peut plus walljump si arrivé en haut de la tour
+		if (other.transform.tag == "TopPlatform") {
+            canWallJump = false;
         }
 
         // Wall Jump si on touche un mur
@@ -66,16 +79,49 @@ public class Player_Movement : MonoBehaviour {
         }
     }
 
-	private void Jump (float force) {
+    private void Jump (float force) {
         body.velocity = new Vector2 (0, force);
         jump -= 1;
 
         // Animation
-        animator.SetTrigger("Jump");
+        animator.SetTrigger ("Jump");
     }
 
     // Appelé par l'UI
-    public void Move (int direction) {
-        xInput = direction;
+    //public void Move (int direction) {
+    //    if (direction == 0) {
+    //        pressedInputs = Mathf.Clamp (pressedInputs - 1, 0, 2);
+    //        if (pressedInputs == 0)
+    //            xInput = 0;
+    //    } else {
+    //        pressedInputs = Mathf.Clamp (pressedInputs + 1, 0, 2);
+    //        xInput = direction;
+    //    }
+    //}
+
+    public bool leftPressed = false;
+    public bool rightPressed = false;
+    public void PressLeft () {
+        xInput = -1;
+        leftPressed = true;
     }
+    public void PressRight () {
+        xInput = 1;
+        rightPressed = true;
+    }
+    public void ReleaseLeft () {
+        leftPressed = false;
+        if (!rightPressed)
+            xInput = 0;
+	}
+    public void ReleaseRight () {
+        rightPressed = false;
+        if (!leftPressed)
+            xInput = 0;
+    }
+    public void ResetMovement () {
+        xInput = 0;
+        rightPressed = false;
+        leftPressed = false;
+	}
 }

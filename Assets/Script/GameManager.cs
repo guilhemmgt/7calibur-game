@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ResetGame () {
-        player_movement.Move (0);
+        player_movement.ResetMovement ();
         towerGen.GenerateTower ();
         ResetPlayer ();
         ResetDragon ();
