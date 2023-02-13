@@ -72,6 +72,14 @@ public class Player_Movement : MonoBehaviour {
             canWallJump = false;
         }
 
+        
+    }
+
+    private void OnCollisionStay2D (Collision2D other) {
+        // Si plus d'épée ou en fin de niveau, plus de saut possible
+        if (isBroken || is7Calibur)
+            return;
+
         // Wall Jump si on touche un mur
         if (other.gameObject.tag == "Wall" && canWallJump) {
             Jump (verticalWallBounce);
@@ -79,7 +87,7 @@ public class Player_Movement : MonoBehaviour {
         }
     }
 
-    private void Jump (float force) {
+	private void Jump (float force) {
         body.velocity = new Vector2 (0, force);
         jump -= 1;
 

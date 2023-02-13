@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour {
     public GameObject Dragon;
     public GameObject player;
 
-    // Positions de spawn
+    // Positions initiales
     public Vector3 posPlayer;
     public Vector3 posDragon;
+
+    public int initialJumpAmount; // Nombre de sauts initial
 
     private void Awake () {
         player_system = player.GetComponent<Player_System> ();
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour {
 
     private void ResetPlayer () {
         player_movement.transform.position = posPlayer; // Position
-        player_movement.jump = 7; // Sauts
+        player_movement.jump = initialJumpAmount; // Sauts
         player.GetComponent<Rigidbody2D> ().velocity = Vector3.zero; // Vélocité
         player_movement.is7Calibur = false;
     }

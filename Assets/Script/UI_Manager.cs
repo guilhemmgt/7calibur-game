@@ -37,13 +37,14 @@ public class UI_Manager : MonoBehaviour {
         Text_Score.text = "Score : " + (int)player_system.score;
         Text_Score_Over.text = "Score : " + (int)player_system.score;
         Text_Tower.text = "Tower : " + (int)player_system.Tower;
+        Text_Jump.text = "" + player_Movement.jump;
 
         // Jump 
-        if (player_Movement.jump > 0) {
-            Text_Jump.text = "Jump : " + player_Movement.jump;
-        } else {
-            Text_Jump.text = "Jump : " + 0;
-        }
+        //if (player_Movement.jump > 0) {
+        //    Text_Jump.text = "" + player_Movement.jump;
+        //} else {
+        //    Text_Jump.text = "Jump : " + 0;
+        //}
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause
