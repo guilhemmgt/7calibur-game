@@ -71,8 +71,6 @@ public class Player_Movement : MonoBehaviour {
 		if (other.transform.tag == "TopPlatform") {
             canWallJump = false;
         }
-
-        
     }
 
     private void OnCollisionStay2D (Collision2D other) {

@@ -140,7 +140,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843655373487153769}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928980278774733250}
   - component: {fileID: 5050304803770313430}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}

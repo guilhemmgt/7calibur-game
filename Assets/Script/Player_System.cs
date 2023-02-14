@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player_System : MonoBehaviour {
@@ -11,10 +12,18 @@ public class Player_System : MonoBehaviour {
     public float height;
     public float maxheight = 0;
 
+    public GameObject scoreEffectPrefab;
+
+    private GameObject scoreEffectSpawner;
+
     // Tower
     public int Tower;
 
-    private void Update () {
+	private void Awake () {
+        scoreEffectSpawner = transform.Find ("ScoreEffectPos").gameObject;
+	}
+
+	private void Update () {
         // Score
 
         //height = transform.position.y;
@@ -47,6 +56,8 @@ public class Player_System : MonoBehaviour {
 
     public void AddScore (int amount) {
         score += amount;
+        GameObject effect = Instantiate (scoreEffectPrefab, scoreEffectSpawner.transform.position, Quaternion.identity);
+        effect.GetComponent<TextMeshPro> ().text = "+" + amount;
 	}
 
     public void AddTower () {
