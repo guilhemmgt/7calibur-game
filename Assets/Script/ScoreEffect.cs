@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ScoreEffect : MonoBehaviour {
     public float floatSpeed;
-	public float floatTime;
+
 
 	private void Start () {
-		AutoDestroy (floatTime);
+		StartCoroutine (AutoDestroy ());
 	}
 
 	private void Update () {
         transform.Translate (Vector3.up * floatSpeed * Time.deltaTime);
     }
 
-	private IEnumerator AutoDestroy (float time) {
-		yield return new WaitForSeconds (time);
+	private IEnumerator AutoDestroy () {
+		yield return new WaitForSeconds (3f);
 		Destroy (gameObject);
 	}
 }
