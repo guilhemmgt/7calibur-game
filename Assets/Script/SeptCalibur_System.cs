@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SeptCalibur_System : MonoBehaviour {
+    // Scripts
+    private GameManager gameManager;
+    private Player_Movement player_mvt;
 
-    // References
     // Composants
     private Animator animator;
-    // Terrain
-    public GameObject TopPlatform;
-    // Dragon
-    private Dragon_System dragon_system;
-    // GameManager
-    private GameManager gameManager;
 
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-        dragon_system = gameManager.Dragon.GetComponent<Dragon_System> ();
+        player_mvt = gameManager.player.GetComponent<Player_Movement> ();
+
         animator = GetComponent<Animator> ();
     }
 
@@ -24,15 +21,10 @@ public class SeptCalibur_System : MonoBehaviour {
         if (other.tag != "Player")
             return;
 
-        Player_Movement player_mvt = other.GetComponent<Player_Movement> ();
-
-        // Etats
+        // Quand on touche le rocher, on est 7calibur
         player_mvt.is7Calibur = true;
 
-        // Dragon
-        dragon_system.transform.position = gameManager.posDragon;
-
-        // L'epee s'enleve
+        // Retire l'épée
         animator.SetBool("isEmpty", true);
     }
 }

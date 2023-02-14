@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spikes : MonoBehaviour {
-	private GameManager gameManager;
-
 	// Scripts
 	private Player_Movement player_mvt;
-
-    // GameObjects
-    public GameObject player;
+	private GameManager gameManager;
 
 	private void Awake () {
-		player = GameObject.Find ("Player");
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-		player_mvt = player.GetComponent<Player_Movement> ();
+		player_mvt = gameManager.player.GetComponent<Player_Movement> ();
 	}
 
 	private void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag != "Player")
 			return;
 
+		// Si on arrive sur les piques depuis le haut, game over
 		if (other.transform.position.y >= transform.position.y - 0.09f && !player_mvt.is7Calibur) {
 			gameManager.GameOver ();
 		}

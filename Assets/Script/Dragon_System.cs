@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dragon_System : MonoBehaviour {
-    // Reference 
-    // Joueur
+    // Scripts
     private Player_Movement player_mvt;
-    // GameManager
     private GameManager gameManager;
 
-    // Constantes
+    // Vitesse du dragon
     public float speed;
 
 

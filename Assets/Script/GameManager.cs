@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour {
     public Vector3 posPlayer;
     public Vector3 posDragon;
 
-    public int initialJumpAmount; // Nombre de sauts initial
+    // Nombre de sauts initial
+    public int initialJumpAmount; 
 
     private void Awake () {
         player_system = player.GetComponent<Player_System> ();
@@ -27,9 +28,11 @@ public class GameManager : MonoBehaviour {
     }
 
 	private void Start () {
+        // Au démarrage, on affiche le menu principal
         Menu ();
     }
 
+    // Réinitialise le joueur et le dragon et génère une nouvelle tour
     private void ResetGame () {
         player_movement.ResetMovement ();
         towerGen.GenerateTower ();
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour {
         ResetDragon ();
     }
 
+    // Réinitialise le joueur
     private void ResetPlayer () {
         player_movement.transform.position = posPlayer; // Position
         player_movement.jump = initialJumpAmount; // Sauts
@@ -44,13 +48,10 @@ public class GameManager : MonoBehaviour {
         player_movement.is7Calibur = false;
     }
 
+    // Réinitialise le dragon
     private void ResetDragon () {
         Dragon.transform.position = posDragon; // Position
     }
-
-    //
-    // J'ai fais 150 fonctions spécifiques en dessous pcq ça sera + pratique, surtout quand on rajoutera des boutons style "retour au menu principal" etc
-    //
 
     // Lancer le menu
     public void Menu () {
@@ -59,27 +60,28 @@ public class GameManager : MonoBehaviour {
         // Réinitialisation
         ResetGame ();
         player_system.ResetScore ();
-
+        // UI
         uiManager.OpenMenuUI ();
     }
     // Démarrer le jeu en l'état actuel (utilisé depuis le menu ou la pause)
     public void Play () {
         // Action
         Time.timeScale = 1;
-
+        // UI
         uiManager.OpenGameUI ();
 	}
     // Mettre le jeu en pause
     public void Pause () {
         // Pause
         Time.timeScale = 0;
-
+        // UI
         uiManager.OpenPauseUI ();
 	}
     // Relancer une nouvelle tour (sans reset du score)
     public void ReplayAfterWin () {
         // Réinitialisation
         ResetGame ();
+        // Incrémentation du nb de tours vaincues
         player_system.AddTower ();
         // Jeu
         Play ();
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour {
     public void GameOver () {
         // Pause
         Time.timeScale = 0;
-
+        // UI
         uiManager.OpenGameOverUI ();
     }
 }

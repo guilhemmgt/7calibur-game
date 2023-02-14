@@ -2261,18 +2261,18 @@ MonoBehaviour:
   topSwordPos: {x: 0, y: 101.35, z: 0}
   swordPrefab: {fileID: 8544927621443471055, guid: cd7fcab7f0e126041b62abd0981b68d6,
     type: 3}
-  swordFrequence: 0
+  swordFrequence: 35
   swordMinL: -0.9
   swordMaxL: 0.9
   swordMinH: 0.4
   swordMaxH: 0.4
   coinPrefab: {fileID: 5303126008772925338, guid: d66c3d874ececfc40a038ab14a5dd992,
     type: 3}
-  coinFrequence: 100
+  coinFrequence: 15
   coinH: 0.7
   spikesPrefab: {fileID: 5879264061145488005, guid: 81f3655c46daa4b4089fac4ba0b09246,
     type: 3}
-  spikesFrequence: 0
+  spikesFrequence: 10
   spikesH: 0.77
 --- !u!1 &1213884843
 GameObject:
@@ -2936,8 +2936,6 @@ MonoBehaviour:
   horizontalSlide: 6
   jump: 7
   is7Calibur: 0
-  leftPressed: 0
-  rightPressed: 0
 --- !u!50 &1494974165
 Rigidbody2D:
   serializedVersion: 4
@@ -3040,6 +3038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e6db31051f757428e6340c753b65d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tower: 1
   score: 0
   oldScore: 0
   newScore: 0
@@ -3048,7 +3047,6 @@ MonoBehaviour:
   maxheight: 0
   scoreEffectPrefab: {fileID: 5215574554092964137, guid: 9d1cf228c94171b4393a613c2dbf8a99,
     type: 3}
-  Tower: 1
 --- !u!61 &1494974170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3514,8 +3512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 249.3, y: -685.39}
-  m_SizeDelta: {x: 298.5239, y: 360.6141}
+  m_AnchoredPosition: {x: 230.55, y: -463.86}
+  m_SizeDelta: {x: 338.9, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843311853
 MonoBehaviour:
@@ -3955,8 +3953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250.74106, y: -685.39154}
-  m_SizeDelta: {x: 298.5239, y: 360.6141}
+  m_AnchoredPosition: {x: -230.55, y: -463.86}
+  m_SizeDelta: {x: 338.9, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045781216
 MonoBehaviour:

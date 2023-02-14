@@ -5,14 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
-    // References
-    // GameManager
+    // Scripts
     private GameManager gameManager;
-    // Player
     private Player_Movement player_Movement;
     private Player_System player_system;
 
-    // Texte
+    // Textes
     public TextMeshProUGUI Text_Score;
     public TextMeshProUGUI Text_Tower;
     public TextMeshProUGUI Text_Jump;
@@ -33,18 +31,14 @@ public class UI_Manager : MonoBehaviour {
     }
 
     private void Update () {
-        // Score 
+        // Actualisation des stats à l'écran 
+        // Score
         Text_Score.text = "Score : " + (int)player_system.score;
         Text_Score_Over.text = "Score : " + (int)player_system.score;
+        // Nb de tours
         Text_Tower.text = "Tower : " + (int)player_system.Tower;
+        // Nb de jumps
         Text_Jump.text = "" + player_Movement.jump;
-
-        // Jump 
-        //if (player_Movement.jump > 0) {
-        //    Text_Jump.text = "" + player_Movement.jump;
-        //} else {
-        //    Text_Jump.text = "Jump : " + 0;
-        //}
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause

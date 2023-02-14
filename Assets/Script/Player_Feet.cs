@@ -10,6 +10,7 @@ public class Player_Feet : MonoBehaviour {
 	}
 
 	private void OnCollisionStay2D (Collision2D other) {
+		// Pour + de simplicité, on transfère les instructions à Player_Movement
 		player_mvt.OnFeetCollisionStay (other);
 	}
 }

@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword_System : MonoBehaviour {
+    // Scripts
+    private GameManager gameManager;
 
-    public int jumpAmount;
+	private void Awake () {
+        gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+	}
 
-    private void OnTriggerEnter2D (Collider2D other) {
+	private void OnTriggerEnter2D (Collider2D other) {
         if (other.tag != "Player")
             return;
 
+        // Si on touche l'épée depuis le haut, on prend l'épée et on réinitialise nos sauts
         if (other.transform.position.y >= transform.position.y) {
-            other.GetComponent<Player_Movement> ().jump = jumpAmount;
-
+            other.GetComponent<Player_Movement> ().jump = gameManager.initialJumpAmount;
             Destroy (gameObject);
         }
     }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Platform_System : MonoBehaviour {
-    // Reference
-    // Joueur
+    // Scripts
     private Player_Movement player_mvt;
 
     // Composants
@@ -16,16 +15,17 @@ public class Platform_System : MonoBehaviour {
     }
 
     private void Update () {
+        // En 7calibur, les plateformes ne font plus de collision
         coll.isTrigger = player_mvt.is7Calibur;
     }
 
-    // Score Descente
     private void OnTriggerEnter2D (Collider2D other) {
         if (other.tag != "Player")
             return;
 
+        // En 7calibur, le joueur détruit les plateformes
         if (player_mvt.is7Calibur) {
-            Destroy (this.gameObject);
+            Destroy (gameObject);
         }
     }
 }

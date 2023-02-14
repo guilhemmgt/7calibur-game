@@ -14,11 +14,15 @@ public class Player_Movement : MonoBehaviour {
     private Animator animator;
 
     // Déplacement
-    public int jump = 7; // Nombre de sauts restants
-    private bool isBroken = false; // Épée brisée (plus de sauts)
-    private bool canWallJump = true; // Peut walljump
+    public int jump; // Nombre de sauts restants
+    private bool isBroken = false; // N'a plus de saut ?
+    private bool canWallJump = true; // Peut walljump ?
+    public bool is7Calibur = false; // En 7calibur ?
+
+    // Input
     private float xInput = 0; // Input directionnel (-1, 0, 1)
-    public bool is7Calibur = false;
+    private bool leftPressed = false; // Bouton gauche pressé ?
+    private bool rightPressed = false; // Bouton droit pressé ?
 
 
     private void Awake () {
@@ -28,20 +32,18 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void Update () {
+        // Vérifie le nb de sauts du joueur
         isBroken = jump <= 0;
+        animator.SetBool ("isBroken", isBroken);
 
-        // Graphisme
-
-        // Flip
+        // Flip selon la direction du déplacement
         if (body.velocity.x > 0f) {
             spriteRenderer.flipX = true;
         }
         if (body.velocity.x < 0f) {
             spriteRenderer.flipX = false;
         }
-        // Animation
-        animator.SetBool ("isBroken", isBroken);
-
+        
         // Controles claviers
         if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Q))
             PressLeft ();
@@ -54,11 +56,12 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void FixedUpdate () {
+        // Déplacement horizontal
         body.velocity = new Vector2 (xInput * horizontalSlide, body.velocity.y);
     }
 
+    // Fonction OnCollisionStay2D de Feet
     public void OnFeetCollisionStay (Collision2D other) {
-        // Si plus d'épée ou en fin de niveau, plus de saut possible
         if (isBroken || is7Calibur)
 			return;
 
@@ -67,6 +70,7 @@ public class Player_Movement : MonoBehaviour {
 			Jump (verticalBounce);
 			canWallJump = true;
 		}
+
         // Ne peut plus walljump si arrivé en haut de la tour
 		if (other.transform.tag == "TopPlatform") {
             canWallJump = false;
@@ -74,7 +78,6 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void OnCollisionStay2D (Collision2D other) {
-        // Si plus d'épée ou en fin de niveau, plus de saut possible
         if (isBroken || is7Calibur)
             return;
 
@@ -86,45 +89,36 @@ public class Player_Movement : MonoBehaviour {
     }
 
 	private void Jump (float force) {
+        // Vélocité
         body.velocity = new Vector2 (0, force);
+        // Décompte du nb de sauts
         jump -= 1;
-
         // Animation
         animator.SetTrigger ("Jump");
     }
 
-    // Appelé par l'UI
-    //public void Move (int direction) {
-    //    if (direction == 0) {
-    //        pressedInputs = Mathf.Clamp (pressedInputs - 1, 0, 2);
-    //        if (pressedInputs == 0)
-    //            xInput = 0;
-    //    } else {
-    //        pressedInputs = Mathf.Clamp (pressedInputs + 1, 0, 2);
-    //        xInput = direction;
-    //    }
-    //}
-
-    public bool leftPressed = false;
-    public bool rightPressed = false;
+    // Gestion de l'input gauche
     public void PressLeft () {
         xInput = -1;
         leftPressed = true;
-    }
-    public void PressRight () {
-        xInput = 1;
-        rightPressed = true;
     }
     public void ReleaseLeft () {
         leftPressed = false;
         if (!rightPressed)
             xInput = 0;
-	}
+    }
+    // Gestion de l'input droit
+    public void PressRight () {
+        xInput = 1;
+        rightPressed = true;
+    }
     public void ReleaseRight () {
         rightPressed = false;
         if (!leftPressed)
             xInput = 0;
     }
+
+    // Réinitialiser l'input directionnel
     public void ResetMovement () {
         xInput = 0;
         rightPressed = false;
