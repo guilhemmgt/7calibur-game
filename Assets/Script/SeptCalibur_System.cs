@@ -24,7 +24,7 @@ public class SeptCalibur_System : MonoBehaviour {
         // Quand on touche le rocher, on est 7calibur
         player_mvt.is7Calibur = true;
 
-        // Retire l'épée
+        // Retire l'epee
         animator.SetBool("isEmpty", true);
     }
 }

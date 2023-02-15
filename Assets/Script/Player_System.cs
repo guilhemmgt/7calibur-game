@@ -23,28 +23,6 @@ public class Player_System : MonoBehaviour {
         scoreEffectSpawner = transform.Find ("ScoreEffectPos").gameObject;
 	}
 
-	private void Update () {
-        // Score
-
-        //height = transform.position.y;
-
-        //if (height > maxheight && height <= 101f) {
-        //    maxheight = height;
-        //}
-
-        //// Spagetti code pour regler un bug sur le reset du score à la mort (mais si on abandonne le score osef)
-        //if (height < 2 && !GetComponent<Player_Movement>().is7Calibur) {
-        //    maxheight = 0f;
-        //}
-
-        //// Montee
-        //climbScore = maxheight;
-
-        //score = oldScore + newScore;
-
-        //newScore = climbScore;
-    }
-
     // Réinitialise le score à 0
     public void ResetScore () {
         score = 0;

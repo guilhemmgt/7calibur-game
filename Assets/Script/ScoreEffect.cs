@@ -11,7 +11,7 @@ public class ScoreEffect : MonoBehaviour {
 	}
 
 	private void Update () {
-		// Le texte se déplace vers le haut
+		// Le texte se deplace vers le haut
         transform.Translate (Vector3.up * floatSpeed * Time.deltaTime);
     }
 

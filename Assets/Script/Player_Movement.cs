@@ -15,7 +15,7 @@ public class Player_Movement : MonoBehaviour {
 
     // Déplacement
     public int jump; // Nombre de sauts restants
-    private bool isBroken = false; // N'a plus de saut ?
+    public bool isBroken = false; // N'a plus de saut ?
     private bool canWallJump = true; // Peut walljump ?
     public bool is7Calibur = false; // En 7calibur ?
 
@@ -32,6 +32,10 @@ public class Player_Movement : MonoBehaviour {
     }
 
     private void Update () {
+
+        // animation 7calibur
+        animator.SetBool ("is7calibur", is7Calibur);
+
         // Vérifie le nb de sauts du joueur
         isBroken = jump <= 0;
         animator.SetBool ("isBroken", isBroken);
