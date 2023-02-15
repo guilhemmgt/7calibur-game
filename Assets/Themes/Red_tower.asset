@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee1eeebb1ac7b345b40169fb1fc04fa, type: 3}
-  m_Name: Red_tower
+  m_Name: Red_Tower
   m_EditorClassIdentifier: 
-  tower: {fileID: 7050714315838124867, guid: c075411664e11eb49ac0608fb7708bbb, type: 3}
-  platform: {fileID: 1843655373487153769, guid: 3913dcbd12d006043b114eae524d7888,
+  tower: {fileID: 7050714315838124867, guid: feca3b914bd6ec64897f98a958ff1800, type: 3}
+  platform: {fileID: 1843655373487153769, guid: 42c05421e29ad1e4d96402c25c966e89,
     type: 3}
-  topPlatform: {fileID: 1055431488163793443, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+  topPlatform: {fileID: 1055431488163793443, guid: 2a296205205069a4ab00e9bf8b089cd4,
     type: 3}
-  groundPlatform: {fileID: 4381690925230549822, guid: 83f4e5316a43b174cb16a1980df56bbe,
+  groundPlatform: {fileID: 4381690925230549822, guid: f2e8a4fcd0e8ada4fa8bb846ff04f377,
     type: 3}
   topSword: {fileID: 7371018347665239594, guid: d4d20783af3969440bea4a9065a80354,
     type: 3}
+  spike: {fileID: 5879264061145488005, guid: be2e3fb63295c1942affb7ef31608a13, type: 3}

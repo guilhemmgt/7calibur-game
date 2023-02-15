@@ -79,14 +79,26 @@ public class TowerGeneration : MonoBehaviour {
         groundPlateformPrefab = theme.groundPlatform;
         topPlateformPrefab = theme.topPlatform;
         topSwordPrefab = theme.topSword;
+        spikesPrefab = theme.spike;
     }
 
     // Règles pour choisir un thème
     private Theme ChooseNewTheme () {
         // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
         // ou des tours spéciales en fonction de la progression du joueur
-        int themeIndex = Random.Range (0, towerThemes.Count);
+        
+        //int themeIndex = Random.Range (0, towerThemes.Count);
+       
+        int randomnumber = Random.Range(0, 100); 
+        int themeIndex;
 
+        if(randomnumber == 1){
+            themeIndex = 1;
+        }
+        else{
+            themeIndex = Random.Range (0, towerThemes.Count - 1);
+        }
+        
         return towerThemes[themeIndex];
     }
 
@@ -111,7 +123,7 @@ public class TowerGeneration : MonoBehaviour {
         Vector3 spawn_position = new Vector3 ();
         for (int i = 0; i < spawn_number; i++) {
             spawn_position.y += Random.Range (platformMinH, platformMaxH);
-            spawn_position.x = Random.Range (platformMinL, platformMaxL);
+            spawn_position.x = Random.Range (platformMinL + 0.1f, platformMaxL- 0.1f);
             SpawnPlatform (spawn_position);
         }
     }

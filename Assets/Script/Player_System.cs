@@ -14,6 +14,9 @@ public class Player_System : MonoBehaviour {
     public float height;
     public float maxheight = 0;
 
+    private float tempsDerniereExecution;
+    public float delai;
+
     // Prefab du texte de score
     public GameObject scoreEffectPrefab;
     // Parent des textes de score
@@ -22,6 +25,17 @@ public class Player_System : MonoBehaviour {
 	private void Awake () {
         scoreEffectSpawner = transform.Find ("ScoreEffectPos").gameObject;
 	}
+
+    private void Update() {
+
+        if(this.GetComponent<Player_Movement>().is7Calibur){
+            tempsDerniereExecution += Time.fixedDeltaTime;		
+		    if (tempsDerniereExecution > delai) {
+			    AddScore(5);
+			    tempsDerniereExecution = 0;			
+		    }
+        }
+    }
 
     // Réinitialise le score à 0
     public void ResetScore () {

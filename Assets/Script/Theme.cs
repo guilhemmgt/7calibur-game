@@ -7,4 +7,6 @@ public class Theme : ScriptableObject {
 	public GameObject tower; // Prefab de la tour (grids, ciel, etc ...)
 	public GameObject platform, topPlatform, groundPlatform; // Prefabs des plateformes
 	public GameObject topSword; // Prefab du rocher de fin
+
+	public GameObject spike; // Prefab des spikes
 }

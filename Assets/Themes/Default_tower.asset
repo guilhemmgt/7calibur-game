@@ -15,9 +15,10 @@ MonoBehaviour:
   tower: {fileID: 7050714315838124867, guid: 91f77a38053010b43bbd0f03c01394c8, type: 3}
   platform: {fileID: 1843655373487153769, guid: 3913dcbd12d006043b114eae524d7888,
     type: 3}
-  topPlatform: {fileID: 1055431488163793443, guid: 77c30980deef7f441bd2bcfd10a4fb4d,
+  topPlatform: {fileID: 1055431488163793443, guid: 2a296205205069a4ab00e9bf8b089cd4,
     type: 3}
   groundPlatform: {fileID: 4381690925230549822, guid: 83f4e5316a43b174cb16a1980df56bbe,
     type: 3}
   topSword: {fileID: 7371018347665239594, guid: d4d20783af3969440bea4a9065a80354,
     type: 3}
+  spike: {fileID: 5879264061145488005, guid: 81f3655c46daa4b4089fac4ba0b09246, type: 3}

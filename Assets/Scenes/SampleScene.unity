@@ -2251,6 +2251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerThemes:
   - {fileID: 11400000, guid: 333e0e8e16e4565439e3581487139ad8, type: 2}
+  - {fileID: 11400000, guid: 19f027e7a802122469c3187b0f52c50e, type: 2}
   - {fileID: 11400000, guid: 4691e7babb8443b42930bd23f283393b, type: 2}
   platformMinH: 2
   platformMaxH: 2
@@ -3047,6 +3048,7 @@ MonoBehaviour:
   climbScore: 0
   height: 0
   maxheight: 0
+  delai: 1
   scoreEffectPrefab: {fileID: 5215574554092964137, guid: 9d1cf228c94171b4393a613c2dbf8a99,
     type: 3}
 --- !u!61 &1494974170
@@ -3062,7 +3064,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01341784, y: 0.025171936}
+  m_Offset: {x: 0.01341784, y: -0.018991351}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3073,7 +3075,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61638343, y: 0.8306006}
+  m_Size: {x: 0.61638343, y: 0.9189272}
   m_EdgeRadius: 0
 --- !u!95 &1494974171
 Animator:
@@ -4397,7 +4399,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: fe1acca0ed9c47c429564681da131e29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

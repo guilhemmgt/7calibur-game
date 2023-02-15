@@ -23,7 +23,7 @@ public class Platform_System : MonoBehaviour {
         if (other.tag != "Player")
             return;
 
-        // En 7calibur, le joueur détruit les plateformes
+        // En 7calibur, le joueur dï¿½truit les plateformes
         if (player_mvt.is7Calibur) {
             Destroy (gameObject);
         }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055431488163793452}
   m_Layer: 0
-  m_Name: Top
+  m_Name: Top base
   m_TagString: TopPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
