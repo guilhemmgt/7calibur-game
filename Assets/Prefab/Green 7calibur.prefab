@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7371018347665239598}
   - component: {fileID: 7371018347665239599}
   - component: {fileID: 7371018347665239596}
-  - component: {fileID: 5200497767173197211}
   m_Layer: 0
   m_Name: Green 7calibur
   m_TagString: Untagged
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 078b5467d962fe64791cade883ba4907, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 966ddc164c31c944eb91592f9f495cdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,24 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ed46fa6f7cf2240bcd823e28b1b106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TopPlatform: {fileID: 0}
---- !u!95 &5200497767173197211
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371018347665239594}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9f7ef11973816614fb43fc85ddb21bd0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  Base: {fileID: 21300000, guid: 966ddc164c31c944eb91592f9f495cdf, type: 3}
+  Empty: {fileID: 21300000, guid: 1e5ade27b5c740d418885129bacb6915, type: 3}

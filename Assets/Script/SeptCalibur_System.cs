@@ -7,16 +7,23 @@ public class SeptCalibur_System : MonoBehaviour {
     private GameManager gameManager;
     private Player_Movement player_mvt;
 
-    // Composants
-    private Animator animator;
-
+    // Sprites
+    public Sprite Base;
+    public Sprite Empty;
+    bool isEmpty;
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_mvt = gameManager.player.GetComponent<Player_Movement> ();
-
-        animator = GetComponent<Animator> ();
     }
 
+    private void Update() {
+        if(isEmpty){
+            GetComponent<SpriteRenderer>().sprite = Empty;
+        }
+        else{
+            GetComponent<SpriteRenderer>().sprite = Base;
+        }
+    }
     private void OnTriggerEnter2D (Collider2D other) {
         if (other.tag != "Player")
             return;
@@ -25,6 +32,6 @@ public class SeptCalibur_System : MonoBehaviour {
         player_mvt.is7Calibur = true;
 
         // Retire l'epee
-        animator.SetBool("isEmpty", true);
+        isEmpty = true;
     }
 }
