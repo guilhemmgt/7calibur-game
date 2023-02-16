@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee1eeebb1ac7b345b40169fb1fc04fa, type: 3}
+  m_Name: White_Tower
+  m_EditorClassIdentifier: 
+  tower: {fileID: 7050714315838124867, guid: d0c3754fc2ea4d145aae5096bb83cc4a, type: 3}
+  platform: {fileID: 1843655373487153769, guid: 131d2e3b310fd4944a32b45c93212f77,
+    type: 3}
+  topPlatform: {fileID: 1055431488163793443, guid: 92a16bb9de7a2d944b836295ff485bd4,
+    type: 3}
+  groundPlatform: {fileID: 4381690925230549822, guid: 0f89fbbdcda31cd4b96ce9f5fd5567fa,
+    type: 3}
+  topSword: {fileID: 7371018347665239594, guid: 1ac92a6a6f5358443bcd80933cba8c9e,
+    type: 3}
+  spike: {fileID: 5879264061145488005, guid: 48c6689f52dd1f144b50bd797acac2dd, type: 3}

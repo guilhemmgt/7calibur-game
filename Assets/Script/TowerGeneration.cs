@@ -92,11 +92,11 @@ public class TowerGeneration : MonoBehaviour {
         int randomnumber = Random.Range(0, 100); 
         int themeIndex;
 
-        if(randomnumber == 1){
-            themeIndex = 1;
+        if(/*randomnumber < 10*/ false){
+            themeIndex = 2;
         }
         else{
-            themeIndex = Random.Range (0, towerThemes.Count - 1);
+            themeIndex = Random.Range (0, towerThemes.Count);
         }
         
         return towerThemes[themeIndex];

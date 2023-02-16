@@ -2253,6 +2253,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 333e0e8e16e4565439e3581487139ad8, type: 2}
   - {fileID: 11400000, guid: 19f027e7a802122469c3187b0f52c50e, type: 2}
   - {fileID: 11400000, guid: 4691e7babb8443b42930bd23f283393b, type: 2}
+  - {fileID: 11400000, guid: 85599fb24b5b7f3429cb474a659428bd, type: 2}
   platformMinH: 2
   platformMaxH: 2
   platformMinL: -2.47
