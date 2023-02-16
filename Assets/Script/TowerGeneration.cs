@@ -48,6 +48,8 @@ public class TowerGeneration : MonoBehaviour {
     public float coinMaxL;
     public float spikeMinL;
     public float spikeMaxL;
+    public float TorchMinL;
+    public float TorchMaxL;
     // Borne Hauteur de Spawn Par rapport a la plateforme
     public float swordMinH;
     public float swordMaxH;
@@ -63,6 +65,12 @@ public class TowerGeneration : MonoBehaviour {
     public GameObject spikesPrefab;
     public int spikesFrequence;
     public float spikesH;
+
+    // Torch
+    [Header ("Torche")]
+    public GameObject torchPrefab;
+    public int torchFrequence;
+    private int Sidechoose;
 
 
     private void Awake () {
@@ -157,6 +165,21 @@ public class TowerGeneration : MonoBehaviour {
             SpawnSword (newPlatform);
         else if (itemToSpawn == spikesPrefab)
             SpawnSpikes (newPlatform);
+
+        // Spawn des torches
+        if(position.x > 1){
+            Sidechoose = 1;
+        }
+        if(position.x < -1){
+            Sidechoose = 2;
+        }
+        else{
+            Sidechoose = 0;
+        }
+        if (Random.Range (0, 100) < torchFrequence) {
+                SpawnTorch(newPlatform, Sidechoose);
+		}
+
     }
 
     private void SpawnSword (Transform platform) {
@@ -189,5 +212,29 @@ public class TowerGeneration : MonoBehaviour {
 
         // Instanciation des piques
         Instantiate (spikesPrefab, position, Quaternion.identity, platform);
+    }
+
+    private void SpawnTorch (Transform platform, int Side) {
+
+        if(Side==1){
+            // Position des piques
+            float xRandomTranslation = Random.Range (-TorchMinL, -TorchMaxL);
+            Vector3 position = platform.position + new Vector3 (xRandomTranslation, 0f, 0f);
+
+            // Instanciation des piques
+            Instantiate (torchPrefab, position, Quaternion.identity, platform);
+        }
+        if(Side==2){
+
+            // Position des piques
+            float xRandomTranslation = Random.Range (TorchMinL, TorchMaxL);
+            Vector3 position = platform.position + new Vector3 (xRandomTranslation, 0f, 0f);
+
+            // Instanciation des piques
+            Instantiate (torchPrefab, position, Quaternion.identity, platform);
+        }
+        else{
+        // Side == 0 , pas de spawn 
+        }
     }
 }
