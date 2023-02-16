@@ -169,8 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dd9a267f315078499cbe28e2ee9e43c
-      internalID: 899099995
+      spriteID: 93d94b3c9d9fd1b4da4d37d651640135
+      internalID: 142991416
       vertices: []
       indices: 
       edges: []
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5961d2a74eb7fc64d97a8f801f554e57
-      internalID: -257924979
+      spriteID: 430092c11f6ec23448a5a8ac8620494f
+      internalID: -1946820423
       vertices: []
       indices: 
       edges: []
@@ -211,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 004fac442a00cec4d8d9e700997a8898
-      internalID: 1292182098
+      spriteID: a75c802bd69b86d4ba1958f1dea931e6
+      internalID: -387978891
       vertices: []
       indices: 
       edges: []
@@ -232,8 +232,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a43340abeea6b145924dfe30f1bac94
-      internalID: 1872873496
+      spriteID: ef2c51a546e870c428fdaa29be20594d
+      internalID: -348009261
       vertices: []
       indices: 
       edges: []
@@ -253,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dddcb12d06d4ad4cb3eb697f2705d4c
-      internalID: -793525196
+      spriteID: d60afedfb2de73d4fa7ef25d4611b9e3
+      internalID: 294310645
       vertices: []
       indices: 
       edges: []
@@ -274,8 +274,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91f4a9e38050edf4dbcc347955c10b65
-      internalID: -1734299887
+      spriteID: dc07bc900de2c9a459938e4d6c53e729
+      internalID: 2144761846
       vertices: []
       indices: 
       edges: []
@@ -295,8 +295,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1768e8f3dee6cc40845a9753bc863b1
-      internalID: -853448737
+      spriteID: 44c986a61ebf4b748bbbd7cbb7389fac
+      internalID: -1164519570
       vertices: []
       indices: 
       edges: []
@@ -316,8 +316,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffd3486df38d4134cb5a408a46a213db
-      internalID: -2068315516
+      spriteID: 65f33b19d1937fd4985887356700a4f5
+      internalID: 2147018720
       vertices: []
       indices: 
       edges: []
@@ -337,8 +337,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a597176a239a024ab5d61fbd07b1972
-      internalID: 421313903
+      spriteID: 9ca0f45f96cf2d843812a08daf6a5fcd
+      internalID: -282772327
       vertices: []
       indices: 
       edges: []
@@ -358,8 +358,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fe7db815a64f3e489c1a80563bb704a
-      internalID: -209183808
+      spriteID: d8265d6d1a5d9a94cba8781ed6d0e53e
+      internalID: -747457879
       vertices: []
       indices: 
       edges: []
@@ -375,16 +375,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      7calibur Tiles White_7: -2068315516
-      7calibur Tiles White_0: 899099995
-      7calibur Tiles White_8: 421313903
-      7calibur Tiles White_6: -853448737
-      7calibur Tiles White_5: -1734299887
-      7calibur Tiles White_9: -209183808
-      7calibur Tiles White_1: -257924979
-      7calibur Tiles White_3: 1872873496
-      7calibur Tiles White_4: -793525196
-      7calibur Tiles White_2: 1292182098
+      7calibur Tiles White_7: 2147018720
+      7calibur Tiles White_0: 142991416
+      7calibur Tiles White_8: -282772327
+      7calibur Tiles White_6: -1164519570
+      7calibur Tiles White_5: 2144761846
+      7calibur Tiles White_9: -747457879
+      7calibur Tiles White_1: -1946820423
+      7calibur Tiles White_3: -348009261
+      7calibur Tiles White_4: 294310645
+      7calibur Tiles White_2: -387978891
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

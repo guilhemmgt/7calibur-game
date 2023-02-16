@@ -44,6 +44,10 @@ public class TowerGeneration : MonoBehaviour {
     // Borne Largeur de Spawn Par rapport a la plateforme
     public float swordMinL;
     public float swordMaxL;
+    public float coinMinL;
+    public float coinMaxL;
+    public float spikeMinL;
+    public float spikeMaxL;
     // Borne Hauteur de Spawn Par rapport a la plateforme
     public float swordMinH;
     public float swordMaxH;
@@ -171,7 +175,7 @@ public class TowerGeneration : MonoBehaviour {
 
     private void SpawnCoin (Transform platform) {
         // Position de la pièce
-        float xRandomTranslation = Random.Range (swordMinL, swordMaxL);
+        float xRandomTranslation = Random.Range (coinMinL, coinMaxL);
         Vector3 position = platform.position + new Vector3 (xRandomTranslation, coinH, 0f);
 
         // Instanciation de la pièce
@@ -180,7 +184,7 @@ public class TowerGeneration : MonoBehaviour {
 
     private void SpawnSpikes (Transform platform) {
         // Position des piques
-        float xRandomTranslation = Random.Range (swordMinL, swordMaxL);
+        float xRandomTranslation = Random.Range (spikeMinL, spikeMaxL);
         Vector3 position = platform.position + new Vector3 (xRandomTranslation, spikesH, 0f);
 
         // Instanciation des piques
