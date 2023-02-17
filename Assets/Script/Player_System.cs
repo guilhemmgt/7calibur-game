@@ -21,8 +21,7 @@ public class Player_System : MonoBehaviour {
     private float tempsDerniereExecution;
     public float delai;
 
-    float yGround;
-    float yTop;
+    float divLength;
     float lastReachedDiv;
 
     // Prefab du texte de score
@@ -36,29 +35,19 @@ public class Player_System : MonoBehaviour {
 
         scoreEffectSpawner = transform.Find ("ScoreEffectPos").gameObject;
 
-        yGround = towerGen.groundPlatformPos.y;
-        yTop = towerGen.topPlatformPos.y;
-        lastReachedDiv = yTop;
+        divLength = (towerGen.topPlatformPos.y - towerGen.groundPlatformPos.y) / 20;
+        lastReachedDiv = towerGen.topPlatformPos.y;
     }
 
-    float test = 0;
     private void Update () {
-        //if (GetComponent<Player_Movement> ().is7Calibur) {
-        //    tempsDerniereExecution += Time.deltaTime;
-        //    if (tempsDerniereExecution > delai) {
-        //        AddScore (5);
-        //        tempsDerniereExecution = 0;
-        //    }
-        //}
-
         if (playerMvt.is7Calibur) {
-            float divLength = (yTop - yGround) / 20;
-            if (transform.position.y < lastReachedDiv - divLength && lastReachedDiv >= yGround) {
+            if (transform.position.y < lastReachedDiv - divLength && lastReachedDiv > towerGen.groundPlatformPos.y) {
                 AddScore (5);
-                test += 5;
                 lastReachedDiv = lastReachedDiv - divLength;
             }
-		}
+		} else {
+            lastReachedDiv = towerGen.topPlatformPos.y;
+        }
     }
 
     // Réinitialise le score à 0
