@@ -2254,11 +2254,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19f027e7a802122469c3187b0f52c50e, type: 2}
   - {fileID: 11400000, guid: 4691e7babb8443b42930bd23f283393b, type: 2}
   - {fileID: 11400000, guid: 85599fb24b5b7f3429cb474a659428bd, type: 2}
-  platformMinH: 2
-  platformMaxH: 2
+  platformMinH: 2.5
+  platformMaxH: 2.5
   platformMinL: -2.47
   platformMaxL: 2.47
-  spawn_number: 49
+  spawn_number: 39
   groundPlatformPos: {x: 0, y: -1, z: 0}
   topPlatformPos: {x: 0, y: 99, z: 0}
   topSwordPos: {x: 0, y: 101.35, z: 0}

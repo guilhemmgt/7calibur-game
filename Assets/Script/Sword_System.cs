@@ -10,7 +10,7 @@ public class Sword_System : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 	}
 
-	private void OnTriggerEnter2D (Collider2D other) {
+	private void OnTriggerStay2D (Collider2D other) {
         if (other.tag != "Player")
             return;
 
