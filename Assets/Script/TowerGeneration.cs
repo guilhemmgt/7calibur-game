@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerGeneration : MonoBehaviour {
+    // Scripts
+    private GameManager gameManager;
+    private Player_System player_system;
     // Préfabs de plateformes
     private GameObject groundPlateformPrefab;
     private GameObject topPlateformPrefab;
@@ -72,11 +75,21 @@ public class TowerGeneration : MonoBehaviour {
     public int torchFrequence;
     private int Sidechoose;
 
+    private bool isBeginner = true;
+
 
     private void Awake () {
         towerContent = GameObject.Find ("TowerContent").transform;
         themeContent = GameObject.Find ("ThemeContent").transform;
+        gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+        player_system = gameManager.player.GetComponent<Player_System> ();
 	}
+
+    private void Update() {
+        if(player_system.Tower!=1){
+            isBeginner = false;
+        }
+    }
 
     // Supprime toutes les plateformes et items de la tour
 	private void CleanTowerContent () {
@@ -104,14 +117,34 @@ public class TowerGeneration : MonoBehaviour {
         int randomnumber = Random.Range(0, 100); 
         int themeIndex;
 
-        if(/*randomnumber < 10*/ false){
-            themeIndex = 2;
+        if(player_system.Tower == 1 && isBeginner){
+            return towerThemes[0];
         }
+        /*else{
+            // Oui ce serait mieux avec un case switch mais ça marchait po
+            if(randomnumber == 0){
+                themeIndex = 4; // Tour d'ivoire        1%
+            }
+            if(randomnumber>=1 && randomnumber<=10){
+                themeIndex = 3; // Tour verte           10%
+            }
+            if(randomnumber>=11 && randomnumber<=30){
+                themeIndex = 3; // Tour rouge           20%      
+            }
+            if(randomnumber>=31 && randomnumber<=70){
+                themeIndex = 3; // Tour rouge           40%      
+            }
+            if(randomnumber>=71 && randomnumber<=85){
+                themeIndex = 3; // Tour Hi7             15%      
+            }
+            if(randomnumber>=86 && randomnumber<=100){
+                themeIndex = 3; // Tour Ram7            15%      
+            }
+        }*/
         else{
-            themeIndex = Random.Range (0, towerThemes.Count);
+            themeIndex = Random.Range (1, towerThemes.Count);
+            return towerThemes[themeIndex];
         }
-        
-        return towerThemes[themeIndex];
     }
 
     // Regenere une nouvelle tour
