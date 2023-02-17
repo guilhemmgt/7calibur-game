@@ -13,6 +13,7 @@ public class UI_Manager : MonoBehaviour {
     // Textes
     public TextMeshProUGUI Text_Score;
     public TextMeshProUGUI Text_Tower;
+    public TextMeshProUGUI Text_Towerbis;
     public TextMeshProUGUI Text_Jump;
     public TextMeshProUGUI Text_Score_Over;
 
@@ -37,6 +38,7 @@ public class UI_Manager : MonoBehaviour {
         Text_Score_Over.text = "Score : " + (int)player_system.score;
         // Nb de tours
         Text_Tower.text = "Tower : " + (int)player_system.Tower;
+        Text_Towerbis.text = "Tower : " + (int)player_system.Tower;
         // Nb de jumps
         Text_Jump.text = "" + player_Movement.jump;
 
