@@ -10,10 +10,14 @@ public class Dragon_System : MonoBehaviour {
     // Vitesse du dragon
     public float speed;
 
+    // Audio
+
+    private AudioManager audiomanager;
 
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_mvt = gameManager.player.GetComponent<Player_Movement> ();
+        audiomanager = GameObject.Find ("GameManager").GetComponent<AudioManager>();
     }
 
 
@@ -29,6 +33,7 @@ public class Dragon_System : MonoBehaviour {
 
         if (player_mvt.is7Calibur) {
             gameManager.ReplayAfterWin (); // Slain
+            audiomanager.SlainSound();
         } else {
             gameManager.GameOver (); // Game Over
         }

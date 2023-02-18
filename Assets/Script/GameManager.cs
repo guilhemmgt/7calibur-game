@@ -19,12 +19,16 @@ public class GameManager : MonoBehaviour {
 
     // Nombre de sauts initial
     public int initialJumpAmount; 
+    
+    // Audio
+    private AudioManager audioManager;
 
     private void Awake () {
         player_system = player.GetComponent<Player_System> ();
         player_movement = player.GetComponent<Player_Movement> ();
         uiManager = GameObject.Find ("UI").GetComponent<UI_Manager> ();
         towerGen = GetComponent<TowerGeneration> ();
+        audioManager = GetComponent<AudioManager>();
     }
 
 	private void Start () {
@@ -98,9 +102,12 @@ public class GameManager : MonoBehaviour {
     }
     // Mort
     public void GameOver () {
+        // Audio
+        audioManager.OverSound();
         // Pause
         Time.timeScale = 0;
         // UI
         uiManager.OpenGameOverUI ();
+
     }
 }

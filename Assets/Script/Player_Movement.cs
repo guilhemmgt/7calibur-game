@@ -24,11 +24,17 @@ public class Player_Movement : MonoBehaviour {
     private bool leftPressed = false; // Bouton gauche pressé ?
     private bool rightPressed = false; // Bouton droit pressé ?
 
+    // Audio
+
+    private AudioManager audiomanager;
+    public GameObject gameManager;
 
     private void Awake () {
+        gameManager = GameObject.Find ("GameManager");
         body = GetComponent<Rigidbody2D> ();
         spriteRenderer = GetComponent<SpriteRenderer> ();
         animator = GetComponent<Animator> ();
+        audiomanager = gameManager.GetComponent<AudioManager>();
     }
 
     private void Update () {
@@ -99,6 +105,8 @@ public class Player_Movement : MonoBehaviour {
         jump -= 1;
         // Animation
         animator.SetTrigger ("Jump");
+        // Audio 
+        audiomanager.JumpSound();
     }
 
     // Gestion de l'input gauche
