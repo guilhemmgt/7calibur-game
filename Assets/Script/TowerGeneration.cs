@@ -75,7 +75,7 @@ public class TowerGeneration : MonoBehaviour {
     public int torchFrequence;
     private int Sidechoose;
 
-    private bool isBeginner = true;
+    private int compteur = 0; // compteur pour eviter le softlock
 
 
     private void Awake () {
@@ -84,12 +84,6 @@ public class TowerGeneration : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_system = gameManager.player.GetComponent<Player_System> ();
 	}
-
-    private void Update() {
-        if(player_system.Tower!=1){
-            isBeginner = false;
-        }
-    }
 
     // Supprime toutes les plateformes et items de la tour
 	private void CleanTowerContent () {
@@ -105,19 +99,18 @@ public class TowerGeneration : MonoBehaviour {
         topPlateformPrefab = theme.topPlatform;
         topSwordPrefab = theme.topSword;
         spikesPrefab = theme.spike;
+        coinPrefab = theme.coin;
     }
 
     // Règles pour choisir un thème
     private Theme ChooseNewTheme () {
         // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
         // ou des tours spéciales en fonction de la progression du joueur
-        
-        //int themeIndex = Random.Range (0, towerThemes.Count);
        
         int randomnumber = Random.Range(0, 100); 
         int themeIndex;
 
-        if(player_system.Tower == 1 && isBeginner){
+        if(player_system.Tower == 1 && player_system.isBeginner){
             return towerThemes[0];
         }
         /*else{
@@ -175,6 +168,7 @@ public class TowerGeneration : MonoBehaviour {
 
     // Créé une plateforme à la position donnée, et avec (ou non) un item (aléatoirement)
     private void SpawnPlatform (Vector3 position) {
+
         // Instancie la plateforme
         Transform newPlatform = Instantiate (plateformPrefab, position, Quaternion.identity, towerContent).transform;
 
@@ -191,13 +185,26 @@ public class TowerGeneration : MonoBehaviour {
                 break;
 			}
 		}
+
+        compteur += 1; // Compteur augmente des qu'on pose une plateforme 
+
+        // Protection Softlock
+        if(compteur > 5){
+            itemToSpawn = swordPrefab;
+        }
+
         // On spawn l'objet choisi
-        if (itemToSpawn == coinPrefab)
+        if (itemToSpawn == coinPrefab){
             SpawnCoin (newPlatform);
-        else if (itemToSpawn == swordPrefab)
+        }
+        else if (itemToSpawn == swordPrefab){
             SpawnSword (newPlatform);
-        else if (itemToSpawn == spikesPrefab)
+            compteur = 0; // Si c'est un épée qui apparait il se reset
+        }
+        else if (itemToSpawn == spikesPrefab){
             SpawnSpikes (newPlatform);
+        }
+            
 
         // Spawn des torches
         if(position.x > 1){

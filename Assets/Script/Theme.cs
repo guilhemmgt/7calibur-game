@@ -9,4 +9,6 @@ public class Theme : ScriptableObject {
 	public GameObject topSword; // Prefab du rocher de fin
 
 	public GameObject spike; // Prefab des spikes
+
+	public GameObject coin; // Prefab des coin
 }

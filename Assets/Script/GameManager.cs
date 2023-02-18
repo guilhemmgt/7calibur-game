@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour {
 	}
     // Relancer une nouvelle tour (sans reset du score)
     public void ReplayAfterWin () {
+        // Si on gagne on quitte le mode débutant.
+        player_system.isBeginner = false;
         // Réinitialisation
         ResetGame ();
         // Incrémentation du nb de tours vaincues

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee1eeebb1ac7b345b40169fb1fc04fa, type: 3}
   m_Name: Ram7_tower
   m_EditorClassIdentifier: 
-  tower: {fileID: 7050714315838124867, guid: 2fd545c1e9796b14aba66b210f0ce717, type: 3}
-  platform: {fileID: 1843655373487153769, guid: 5dfd9a49cf35c4e43b47ef1f10c6d4c4,
+  tower: {fileID: 7050714315838124867, guid: 4d69308c91aa5e243ba2aba43ba657c1, type: 3}
+  platform: {fileID: 1843655373487153769, guid: 7d8325d146b83fe4cbaa2cb95feda300,
     type: 3}
-  topPlatform: {fileID: 1055431488163793443, guid: 476b59af47a1a3341af2d3d05d28f162,
+  topPlatform: {fileID: 1055431488163793443, guid: 62ceb84eaa967ca419a48182078a3aeb,
     type: 3}
-  groundPlatform: {fileID: 4381690925230549822, guid: ef133647d9732b544afc6aae59d7b769,
+  groundPlatform: {fileID: 4381690925230549822, guid: 5cd63bbac6b736f489aecc61c4ffde3e,
     type: 3}
-  topSword: {fileID: 7371018347665239594, guid: 8d6ac0a0f64a59f468dd02b9d2ab9ecc,
+  topSword: {fileID: 7371018347665239594, guid: e19e430cde6a0d4429998c1c1ad605bf,
     type: 3}
-  spike: {fileID: 5879264061145488005, guid: d7cb811ff9880c64784a3819225bab78, type: 3}
+  spike: {fileID: 5879264061145488005, guid: e3c477fce31bbc04cad12f07fc863c35, type: 3}
+  coin: {fileID: 5303126008772925338, guid: f66e9590171cee64c86216599f71a70e, type: 3}

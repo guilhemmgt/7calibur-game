@@ -22,3 +22,4 @@ MonoBehaviour:
   topSword: {fileID: 7371018347665239594, guid: d4d20783af3969440bea4a9065a80354,
     type: 3}
   spike: {fileID: 5879264061145488005, guid: 81f3655c46daa4b4089fac4ba0b09246, type: 3}
+  coin: {fileID: 5303126008772925338, guid: d66c3d874ececfc40a038ab14a5dd992, type: 3}

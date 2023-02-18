@@ -29,6 +29,8 @@ public class Player_System : MonoBehaviour {
     // Parent des textes de score
     private GameObject scoreEffectSpawner;
 
+    public bool isBeginner = true;
+
     private void Awake () {
         towerGen = GameObject.Find ("GameManager").GetComponent<TowerGeneration> ();
         playerMvt = GetComponent<Player_Movement> ();
@@ -70,6 +72,7 @@ public class Player_System : MonoBehaviour {
     // Incrémente le nb de tours vaincues (et ajoute du score mais on l'enlèvera après du coup)
     public void AddTower () {
         Tower += 1;
+        isBeginner = false;
         AddScore (100);
     }
 }

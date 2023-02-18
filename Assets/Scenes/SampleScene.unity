@@ -3066,6 +3066,7 @@ MonoBehaviour:
   delai: 1
   scoreEffectPrefab: {fileID: 5215574554092964137, guid: 9d1cf228c94171b4393a613c2dbf8a99,
     type: 3}
+  isBeginner: 1
 --- !u!61 &1494974170
 BoxCollider2D:
   m_ObjectHideFlags: 0
