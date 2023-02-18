@@ -10,5 +10,5 @@ public class Theme : ScriptableObject {
 
 	public GameObject spike; // Prefab des spikes
 
-	public GameObject coin; // Prefab des coin
+	public GameObject coin; // Prefab des coins
 }

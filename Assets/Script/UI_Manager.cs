@@ -28,6 +28,11 @@ public class UI_Manager : MonoBehaviour {
     // UI active (parmi les UI ci-dessus)
     private GameObject activeUI;
 
+    // Polices
+    public TMP_FontAsset blackFont;
+    public TMP_FontAsset redFont;
+    public TMP_FontAsset goldFont;
+
     private void Awake () {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_Movement = gameManager.player.GetComponent<Player_Movement> ();
@@ -38,15 +43,25 @@ public class UI_Manager : MonoBehaviour {
     private void Update () {
         // Actualisation des stats à l'écran 
         // Score
-        Text_Score.text = "Score : " + (int)player_system.score;
-        Text_Score_Over.text = "Score : " + (int)player_system.score;
+        Text_Score.text = "Score : " + player_system.score;
+        Text_Score_Over.text = "Score : " + player_system.score;
         // Nb de tours
-        Text_Tower.text = "Tower : " + (int)player_system.Tower;
-        Text_Towerbis.text = "Tower : " + (int)player_system.Tower;
+        Text_Tower.text = "Tower : " + player_system.Tower;
+        Text_Towerbis.text = "Tower : " + player_system.Tower;
         // Nb de jumps
         Text_Jump.text = "" + player_Movement.jump;
         // Clé du score
-        Text_Key.text = "[" + scoreKey.GetKey ((int)player_system.score) + "]";
+        if (player_system.score != 0)
+            Text_Key.text = "[" + scoreKey.GetKey (player_system.score) + "]";
+        else
+            Text_Key.text = "Frérot fais un effort";
+        // [Anticheat] Changement de l'ombre de la police en fonction du score
+        if (player_system.score < 5000)
+            Text_Key.font = blackFont;
+        else if (player_system.score < 10000)
+            Text_Key.font = redFont;
+        else
+            Text_Key.font = goldFont;
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause

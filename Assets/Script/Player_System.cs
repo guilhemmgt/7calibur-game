@@ -11,23 +11,17 @@ public class Player_System : MonoBehaviour {
     // Nb de tours vaincues
     public int Tower;
     // Score
-    public float score;
-    public float oldScore;
-    public float newScore;
-    public float climbScore;
-    public float height;
-    public float maxheight = 0;
+    public int score;
 
-    private float tempsDerniereExecution;
-    public float delai;
-
-    float divLength;
-    float lastReachedDiv;
+    private float divLength;
+    private float lastReachedDiv;
+    private int anticheatCounter = 0;
 
     // Prefab du texte de score
     public GameObject scoreEffectPrefab;
     // Parent des textes de score
     private GameObject scoreEffectSpawner;
+    private GameObject scoreEffectContent;
 
     public bool isBeginner = true;
 
@@ -36,18 +30,22 @@ public class Player_System : MonoBehaviour {
         playerMvt = GetComponent<Player_Movement> ();
 
         scoreEffectSpawner = transform.Find ("ScoreEffectPos").gameObject;
+        scoreEffectContent = GameObject.Find ("ScoreEffectContent");
 
-        divLength = (towerGen.topPlatformPos.y - towerGen.groundPlatformPos.y) / 20;
+        divLength = (towerGen.topPlatformPos.y - towerGen.groundPlatformPos.y) / 100;
         lastReachedDiv = towerGen.topPlatformPos.y;
     }
 
     private void Update () {
         if (playerMvt.is7Calibur) {
             if (transform.position.y < lastReachedDiv - divLength && lastReachedDiv > towerGen.groundPlatformPos.y) {
-                AddScore (5);
+                if (anticheatCounter <= 100)
+                    AddScore (1);
+                anticheatCounter += 1;
                 lastReachedDiv = lastReachedDiv - divLength;
             }
-		} else {
+        } else {
+            anticheatCounter = 0;
             lastReachedDiv = towerGen.topPlatformPos.y;
         }
     }
@@ -55,17 +53,19 @@ public class Player_System : MonoBehaviour {
     // Réinitialise le score à 0
     public void ResetScore () {
         score = 0;
-        oldScore = 0;
-        newScore = 0;
-        climbScore = 0;
-
         Tower = 1;
+    }
+
+    public void ResetScoreEffect () {
+        foreach (Transform child in scoreEffectContent.transform) {
+            Destroy (child.gameObject);
+        }
     }
 
     // Ajoute du score et génère un effet
     public void AddScore (int amount) {
         score += amount;
-        GameObject effect = Instantiate (scoreEffectPrefab, scoreEffectSpawner.transform.position, Quaternion.identity);
+        GameObject effect = Instantiate (scoreEffectPrefab, scoreEffectSpawner.transform.position, Quaternion.identity, scoreEffectContent.transform);
         effect.GetComponent<TextMeshPro> ().text = "+" + amount;
     }
 

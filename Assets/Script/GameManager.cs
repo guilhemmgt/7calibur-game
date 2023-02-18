@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour {
         player_movement.jump = initialJumpAmount; // Sauts
         player.GetComponent<Rigidbody2D> ().velocity = Vector3.zero; // Vélocité
         player_movement.is7Calibur = false;
+        player_system.ResetScoreEffect ();
     }
 
     // Réinitialise le dragon
@@ -59,28 +60,28 @@ public class GameManager : MonoBehaviour {
 
     // Lancer le menu
     public void Menu () {
-        // Pause
-        Time.timeScale = 0;
         // Réinitialisation
         ResetGame ();
         player_system.ResetScore ();
         // UI
         uiManager.OpenMenuUI ();
+        // Pause
+        Time.timeScale = 0;
     }
     // Démarrer le jeu en l'état actuel (utilisé depuis le menu ou la pause)
     public void Play () {
-        // Action
-        Time.timeScale = 1;
         // UI
         uiManager.OpenGameUI ();
-	}
+        // Action
+        Time.timeScale = 1;
+    }
     // Mettre le jeu en pause
     public void Pause () {
-        // Pause
-        Time.timeScale = 0;
         // UI
         uiManager.OpenPauseUI ();
-	}
+        // Pause
+        Time.timeScale = 0;
+    }
     // Relancer une nouvelle tour (sans reset du score)
     public void ReplayAfterWin () {
         // Si on gagne on quitte le mode débutant.
@@ -103,11 +104,11 @@ public class GameManager : MonoBehaviour {
     // Mort
     public void GameOver () {
         // Audio
-        audioManager.OverSound();
-        // Pause
-        Time.timeScale = 0;
+        audioManager.OverSound ();
         // UI
         uiManager.OpenGameOverUI ();
-
+        player_system.ResetScoreEffect ();
+        // Pause
+        Time.timeScale = 0;
     }
 }

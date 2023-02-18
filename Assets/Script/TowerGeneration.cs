@@ -108,24 +108,24 @@ public class TowerGeneration : MonoBehaviour {
         // ou des tours spéciales en fonction de la progression du joueur
        
         int randomnumber = Random.Range(0, 100); 
-        int themeIndex;
+        int themeIndex = 0;
 
-        if(player_system.Tower == 1 && player_system.isBeginner){
-            return towerThemes[0];
+        if (player_system.Tower == 1 && player_system.isBeginner) {
+            themeIndex = 0;
         }
-        /*else{
+        else{
             // Oui ce serait mieux avec un case switch mais ça marchait po
-            if(randomnumber == 0){
-                themeIndex = 4; // Tour d'ivoire        1%
+            if(randomnumber <= 5){
+                themeIndex = 4; // Tour d'ivoire        5%
             }
-            if(randomnumber>=1 && randomnumber<=10){
-                themeIndex = 3; // Tour verte           10%
+            if(randomnumber>=6 && randomnumber<=25){
+                themeIndex = 3; // Tour verte           20%
             }
-            if(randomnumber>=11 && randomnumber<=30){
+            if(randomnumber>=26 && randomnumber<=45){
                 themeIndex = 3; // Tour rouge           20%      
             }
-            if(randomnumber>=31 && randomnumber<=70){
-                themeIndex = 3; // Tour rouge           40%      
+            if(randomnumber>=46 && randomnumber<=70){
+                themeIndex = 3; // Tour normale         25%      
             }
             if(randomnumber>=71 && randomnumber<=85){
                 themeIndex = 3; // Tour Hi7             15%      
@@ -133,11 +133,13 @@ public class TowerGeneration : MonoBehaviour {
             if(randomnumber>=86 && randomnumber<=100){
                 themeIndex = 3; // Tour Ram7            15%      
             }
-        }*/
-        else{
+        }
+        /*else {
             themeIndex = Random.Range (1, towerThemes.Count);
             return towerThemes[themeIndex];
-        }
+        }*/
+
+        return towerThemes[themeIndex];
     }
 
     // Regenere une nouvelle tour
@@ -189,7 +191,7 @@ public class TowerGeneration : MonoBehaviour {
         compteur += 1; // Compteur augmente des qu'on pose une plateforme 
 
         // Protection Softlock
-        if (compteur > 5) {
+        if (compteur > 4) {
             itemToSpawn = swordPrefab;
         }
 
