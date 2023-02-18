@@ -183,42 +183,39 @@ public class TowerGeneration : MonoBehaviour {
             if (Random.Range (0, 100) < somme) {
                 itemToSpawn = items[i];
                 break;
-			}
-		}
+            }
+        }
 
         compteur += 1; // Compteur augmente des qu'on pose une plateforme 
 
         // Protection Softlock
-        if(compteur > 5){
+        if (compteur > 5) {
             itemToSpawn = swordPrefab;
         }
 
         // On spawn l'objet choisi
-        if (itemToSpawn == coinPrefab){
+        if (itemToSpawn == coinPrefab) {
             SpawnCoin (newPlatform);
-        }
-        else if (itemToSpawn == swordPrefab){
+        } else if (itemToSpawn == swordPrefab) {
             SpawnSword (newPlatform);
             compteur = 0; // Si c'est un épée qui apparait il se reset
-        }
-        else if (itemToSpawn == spikesPrefab){
+        } else if (itemToSpawn == spikesPrefab) {
             SpawnSpikes (newPlatform);
         }
-            
+
 
         // Spawn des torches
-        if(position.x > 1){
+        if (position.x > 1) {
             Sidechoose = 1;
-        }
-        if(position.x < -1){
+        } else if (position.x < -1) {
             Sidechoose = 2;
-        }
-        else{
+        } else {
             Sidechoose = 0;
         }
+
         if (Random.Range (0, 100) < torchFrequence) {
-                SpawnTorch(newPlatform, Sidechoose);
-		}
+            SpawnTorch (newPlatform, Sidechoose);
+        }
 
     }
 
@@ -258,7 +255,7 @@ public class TowerGeneration : MonoBehaviour {
 
         if(Side==1){
             // Position des piques
-            float xRandomTranslation = Random.Range (-TorchMinL, -TorchMaxL);
+            float xRandomTranslation = Random.Range (-TorchMaxL, -TorchMinL);
             Vector3 position = platform.position + new Vector3 (xRandomTranslation, 0f, 0f);
 
             // Instanciation des piques

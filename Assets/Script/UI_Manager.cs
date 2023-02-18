@@ -9,6 +9,7 @@ public class UI_Manager : MonoBehaviour {
     private GameManager gameManager;
     private Player_Movement player_Movement;
     private Player_System player_system;
+    private ScoreKey scoreKey;
 
     // Textes
     public TextMeshProUGUI Text_Score;
@@ -16,12 +17,14 @@ public class UI_Manager : MonoBehaviour {
     public TextMeshProUGUI Text_Towerbis;
     public TextMeshProUGUI Text_Jump;
     public TextMeshProUGUI Text_Score_Over;
+    public TextMeshProUGUI Text_Key;
 
     // UI
     public GameObject pauseUI;
     public GameObject gameOverUI;
     public GameObject menuUI;
     public GameObject gameUI;
+    public GameObject rulesUI;
     // UI active (parmi les UI ci-dessus)
     private GameObject activeUI;
 
@@ -29,6 +32,7 @@ public class UI_Manager : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_Movement = gameManager.player.GetComponent<Player_Movement> ();
         player_system = gameManager.player.GetComponent<Player_System> ();
+        scoreKey = gameManager.GetComponent<ScoreKey> ();
     }
 
     private void Update () {
@@ -41,6 +45,8 @@ public class UI_Manager : MonoBehaviour {
         Text_Towerbis.text = "Tower : " + (int)player_system.Tower;
         // Nb de jumps
         Text_Jump.text = "" + player_Movement.jump;
+        // Clé du score
+        Text_Key.text = "[" + scoreKey.GetKey ((int)player_system.score) + "]";
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause
@@ -68,6 +74,7 @@ public class UI_Manager : MonoBehaviour {
         gameOverUI.SetActive (false);
         menuUI.SetActive (false);
         gameUI.SetActive (false);
+        rulesUI.SetActive (false);
 
         menu.SetActive (true);
         activeUI = menu;
@@ -88,5 +95,8 @@ public class UI_Manager : MonoBehaviour {
     // Ouvre l'écran de mort
     public void OpenGameOverUI () {
         SelectUI (gameOverUI);
+	}
+    public void OpenRulesUI () {
+        SelectUI (rulesUI);
 	}
 }
