@@ -57,7 +57,7 @@ public class UI_Manager : MonoBehaviour {
         else if (key == -2)
             Text_Key.text = "Frérot arrête de cheater";
         else
-            Text_Key.text = "[" + scoreKey.GetKey (player_system.score) + "]";
+            Text_Key.text = "[" + gameManager.version + "." + scoreKey.GetKey (player_system.score) + "]";
         // [Anticheat] Changement de l'ombre de la police en fonction du score
         if (player_system.score < 5000)
             Text_Key.font = blackFont;
