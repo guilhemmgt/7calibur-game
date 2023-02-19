@@ -30,6 +30,7 @@ public class SeptCalibur_System : MonoBehaviour {
 
         // Quand on touche le rocher, on est 7calibur
         player_mvt.is7Calibur = true;
+        player_mvt.jump = gameManager.initialJumpAmount;
 
         // Retire l'epee
         isEmpty = true;

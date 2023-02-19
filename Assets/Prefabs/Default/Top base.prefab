@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1055431488163793452}
   m_Layer: 0
-  m_Name: Green Top
-  m_TagString: TopPlatform
+  m_Name: Top base
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: a6614fc171022bb4e9094413b8fc388e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f83a55748209c3b49bfbc2a89d07ec75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 1751356352677118452}
   m_Layer: 6
   m_Name: TopPlateform
-  m_TagString: Untagged
+  m_TagString: TopPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9d4b29d16ce86454ca086178e0b03a0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f715910a95d164a49817d0ca29d84b20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
