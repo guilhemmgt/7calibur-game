@@ -77,6 +77,8 @@ public class TowerGeneration : MonoBehaviour {
 
     private int compteur = 0; // compteur pour eviter le softlock
 
+    public int compteurtorche = 0; // compteur pour les torches 
+
 
     private void Awake () {
         towerContent = GameObject.Find ("TowerContent").transform;
@@ -107,38 +109,32 @@ public class TowerGeneration : MonoBehaviour {
         // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
         // ou des tours spéciales en fonction de la progression du joueur
        
-        int randomnumber = Random.Range(0, 100); 
+        int randomnumber = Random.Range(1, 100); 
         int themeIndex = 0;
 
         if (player_system.Tower == 1 && player_system.isBeginner) {
             themeIndex = 0;
         }
         else{
-            // Oui ce serait mieux avec un case switch mais ça marchait po
-            if(randomnumber <= 5){
-                themeIndex = 4; // Tour d'ivoire        5%
+            if(randomnumber == 100){
+                themeIndex = 4; // Tour d'ivoire        1% 
             }
-            if(randomnumber>=6 && randomnumber<=25){
-                themeIndex = 3; // Tour verte           20%
+            if(randomnumber>=91 && randomnumber<=99){
+                themeIndex = 3; // Tour verte           9%
             }
-            if(randomnumber>=26 && randomnumber<=45){
-                themeIndex = 3; // Tour rouge           20%      
+            if(randomnumber>=71 && randomnumber<=90){
+                themeIndex = 2; // Tour rouge           30%      
             }
-            if(randomnumber>=46 && randomnumber<=70){
-                themeIndex = 3; // Tour normale         25%      
+            if(randomnumber>=31 && randomnumber<=70){
+                themeIndex = 1; // Tour normale         30%      
             }
-            if(randomnumber>=71 && randomnumber<=85){
-                themeIndex = 3; // Tour Hi7             15%      
+            if(randomnumber>=16 && randomnumber<=30){
+                themeIndex = 5; // Tour Hi7             15%      
             }
-            if(randomnumber>=86 && randomnumber<=100){
-                themeIndex = 3; // Tour Ram7            15%      
+            if(randomnumber<=15){
+                themeIndex = 6; // Tour Ram7            15%      
             }
         }
-        /*else {
-            themeIndex = Random.Range (1, towerThemes.Count);
-            return towerThemes[themeIndex];
-        }*/
-
         return towerThemes[themeIndex];
     }
 
@@ -214,10 +210,12 @@ public class TowerGeneration : MonoBehaviour {
         } else {
             Sidechoose = 0;
         }
-
-        if (Random.Range (0, 100) < torchFrequence) {
+        if(compteurtorche <= 0){
             SpawnTorch (newPlatform, Sidechoose);
+            compteurtorche = torchFrequence;
         }
+        
+        compteurtorche += -1;
 
     }
 

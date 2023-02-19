@@ -3334,7 +3334,8 @@ MonoBehaviour:
   spikesH: 0.77
   torchPrefab: {fileID: 6699267104230531931, guid: 259ca15bc948ad1418a944dc4b6d255f,
     type: 3}
-  torchFrequence: 50
+  torchFrequence: 3
+  compteurtorche: 0
 --- !u!114 &1150847601
 MonoBehaviour:
   m_ObjectHideFlags: 0
