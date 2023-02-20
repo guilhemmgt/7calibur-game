@@ -162,6 +162,7 @@ public class TowerGeneration : MonoBehaviour {
             spawn_position.y += Random.Range (platformMinH, platformMaxH);
             spawn_position.x = Random.Range (platformMinL + 0.1f, platformMaxL- 0.1f);
             SpawnPlatform (spawn_position, isFirstPlaform);
+            isFirstPlaform = false;
         }
     }
 
