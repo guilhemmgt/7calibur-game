@@ -12,11 +12,11 @@ public class ScoreKey : MonoBehaviour {
 	}
 
 	public int GetKey (int score) {
+		int scoreIndex = Mathf.FloorToInt (score / 100);
 		if (score == 0)
 			return -1;
-		if (score >= keys.Length)
+		if (scoreIndex >= keys.Length)
 			return -2;
-		int scoreIndex = Mathf.FloorToInt (score / 100);
 		return int.Parse (keys[scoreIndex]);
 	}
 }

@@ -43,11 +43,11 @@ public class UI_Manager : MonoBehaviour {
     private void Update () {
         // Actualisation des stats à l'écran 
         // Score
-        Text_Score.text = "Score : " + player_system.score;
+        Text_Score.text = "" + player_system.score;
         Text_Score_Over.text = "Score : " + player_system.score;
         // Nb de tours
-        Text_Tower.text = "Tower : " + player_system.Tower;
-        Text_Towerbis.text = "Tower : " + player_system.Tower;
+        Text_Tower.text = "" + player_system.Tower;
+        Text_Towerbis.text = "Tour " + player_system.Tower;
         // Nb de jumps
         Text_Jump.text = "" + player_Movement.jump;
         // Clé du score
@@ -57,7 +57,7 @@ public class UI_Manager : MonoBehaviour {
         else if (key == -2)
             Text_Key.text = "Frérot arrête de cheater";
         else
-            Text_Key.text = "[" + gameManager.version + "." + scoreKey.GetKey (player_system.score) + "]";
+            Text_Key.text = "[" + gameManager.version + "." + key + "]";
         // [Anticheat] Changement de l'ombre de la police en fonction du score
         if (player_system.score < 5000)
             Text_Key.font = blackFont;

@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
         player_movement.jump = initialJumpAmount; // Sauts
         player.GetComponent<Rigidbody2D> ().velocity = Vector3.zero; // Vélocité
         player_movement.is7Calibur = false;
+        player.GetComponent<Animator> ().Play ("Sword");
         player_system.ResetScoreEffect ();
     }
 
