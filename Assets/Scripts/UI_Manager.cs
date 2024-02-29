@@ -68,22 +68,28 @@ public class UI_Manager : MonoBehaviour {
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause
-            if (Input.GetKeyDown (KeyCode.Escape)) {
+            if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown (KeyCode.Return)) {
                 gameManager.Play ();
             }
-        } else if (activeUI == gameOverUI) { // UI Game Over
-            if ((Input.anyKeyDown)) {
-                //gameManager.ReplayAfterGameOver ();
-            }
+			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+				gameManager.Menu ();
+			}
+		} else if (activeUI == gameOverUI) { // UI Game Over
+			if (Input.GetKeyDown (KeyCode.Return)) {
+				gameManager.ReplayAfterGameOver ();
+			}
         } else if (activeUI == gameUI) { // UI Jeu
-            if (Input.GetKeyDown (KeyCode.Escape)) {
+            if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
                 gameManager.Pause ();
             }
         } else if (activeUI == menuUI) { // UI Menu
-            if ((Input.anyKeyDown)) {
-                //gameManager.Play ();
+            if (Input.GetKeyDown(KeyCode.Return)) {
+                gameManager.Play ();
             }
-        }
+			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+				gameManager.QuitGame ();
+			}
+		}
     }
 
     // Ouvre une UI et ferme toutes les autres

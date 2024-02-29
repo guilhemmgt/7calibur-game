@@ -109,7 +109,7 @@ public class TowerGeneration : MonoBehaviour {
         // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
         // ou des tours spéciales en fonction de la progression du joueur
        
-        int randomnumber = Random.Range(1, 100); 
+        int randomnumber = Random.Range(1, 101); 
         int themeIndex = 0;
 
         if (player_system.Tower == 1 && player_system.isBeginner) {

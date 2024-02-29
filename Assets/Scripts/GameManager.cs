@@ -114,4 +114,8 @@ public class GameManager : MonoBehaviour {
         // Pause
         Time.timeScale = 0;
     }
+
+    public void QuitGame () {
+        Application.Quit ();
+    }
 }
