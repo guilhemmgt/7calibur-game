@@ -78,7 +78,10 @@ public class UI_Manager : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				gameManager.ReplayAfterGameOver ();
 			}
-        } else if (activeUI == gameUI) { // UI Jeu
+			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+				gameManager.Menu ();
+			}
+		} else if (activeUI == gameUI) { // UI Jeu
             if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
                 gameManager.Pause ();
             }
