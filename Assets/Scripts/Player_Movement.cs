@@ -55,13 +55,13 @@ public class Player_Movement : MonoBehaviour {
         }
         
         // Controles claviers
-        if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Q))
+        if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Q) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown (KeyCode.I))
             PressLeft ();
-        if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.Q))
+        if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.Q) || Input.GetKeyUp (KeyCode.R) || Input.GetKeyUp (KeyCode.I))
             ReleaseLeft ();
-        if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D))
+        if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.Y) || Input.GetKeyDown (KeyCode.P))
             PressRight ();
-        if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.D))
+        if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.Y) || Input.GetKeyUp (KeyCode.P))
             ReleaseRight ();
     }
 
