@@ -68,28 +68,28 @@ public class UI_Manager : MonoBehaviour {
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause
-            if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown (KeyCode.Return)) {
+            if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
                 gameManager.Play ();
             }
-			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
 				gameManager.Menu ();
 			}
 		} else if (activeUI == gameOverUI) { // UI Game Over
-			if (Input.GetKeyDown (KeyCode.Return)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
 				gameManager.ReplayAfterGameOver ();
 			}
-			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
 				gameManager.Menu ();
 			}
 		} else if (activeUI == gameUI) { // UI Jeu
-            if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+            if (Input.GetKeyDown (KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick1Button6)) {
                 gameManager.Pause ();
             }
         } else if (activeUI == menuUI) { // UI Menu
-            if (Input.GetKeyDown(KeyCode.Return)) {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button6)) {
                 gameManager.Play ();
             }
-			if (Input.GetKeyDown (KeyCode.B) || Input.GetKeyDown (KeyCode.N)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
 				gameManager.QuitGame ();
 			}
 		}

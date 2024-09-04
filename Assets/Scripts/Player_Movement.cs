@@ -54,15 +54,8 @@ public class Player_Movement : MonoBehaviour {
             spriteRenderer.flipX = false;
         }
         
-        // Controles claviers
-        if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.Q) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown (KeyCode.I))
-            PressLeft ();
-        if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.Q) || Input.GetKeyUp (KeyCode.R) || Input.GetKeyUp (KeyCode.I))
-            ReleaseLeft ();
-        if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.Y) || Input.GetKeyDown (KeyCode.P))
-            PressRight ();
-        if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.Y) || Input.GetKeyUp (KeyCode.P))
-            ReleaseRight ();
+        // Controles direction
+        xInput = Input.GetAxisRaw("Horizontal");
     }
 
     private void FixedUpdate () {
@@ -108,32 +101,4 @@ public class Player_Movement : MonoBehaviour {
         // Audio 
         audiomanager.JumpSound();
     }
-
-    // Gestion de l'input gauche
-    public void PressLeft () {
-        xInput = -1;
-        leftPressed = true;
-    }
-    public void ReleaseLeft () {
-        leftPressed = false;
-        if (!rightPressed)
-            xInput = 0;
-    }
-    // Gestion de l'input droit
-    public void PressRight () {
-        xInput = 1;
-        rightPressed = true;
-    }
-    public void ReleaseRight () {
-        rightPressed = false;
-        if (!leftPressed)
-            xInput = 0;
-    }
-
-    // Réinitialiser l'input directionnel
-    public void ResetMovement () {
-        xInput = 0;
-        rightPressed = false;
-        leftPressed = false;
-	}
 }
