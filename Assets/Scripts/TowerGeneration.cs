@@ -109,31 +109,24 @@ public class TowerGeneration : MonoBehaviour {
         // Pour l'instant c'est juste random, mais on pourra implémenter des fréquences
         // ou des tours spéciales en fonction de la progression du joueur
        
-        int randomnumber = Random.Range(1, 101); 
+        int randomnumber = Random.Range(0, 100); 
         int themeIndex = 0;
 
         if (player_system.Tower == 1 && player_system.isBeginner) {
-            themeIndex = 0;
-        }
-        else{
-            if(randomnumber == 100){
-                themeIndex = 4; // Tour d'ivoire        1% 
-            }
-            if(randomnumber>=91 && randomnumber<=99){
-                themeIndex = 3; // Tour verte           9%
-            }
-            if(randomnumber>=71 && randomnumber<=90){
-                themeIndex = 2; // Tour rouge           30%      
-            }
-            if(randomnumber>=31 && randomnumber<=70){
-                themeIndex = 1; // Tour normale         30%      
-            }
-            if(randomnumber>=16 && randomnumber<=30){
-                themeIndex = 5; // Tour Hi7             15%      
-            }
-            if(randomnumber<=15){
-                themeIndex = 6; // Tour Ram7            15%      
-            }
+            themeIndex = 0; // Tour tuto
+        } else {
+            if (randomnumber == 0)
+                themeIndex = 4; // Tour d'ivoire        1%
+            else if (randomnumber <= 20)
+                themeIndex = 5; // Tour Hi7             20%
+            else if (randomnumber <= 40)
+                themeIndex = 6; // Tour Ram7            20%
+            else if (randomnumber <= 69)
+                themeIndex = 1; // Tour normale         29%
+            else if (randomnumber <= 84)
+                themeIndex = 2; // Tour verte           15%
+            else if (randomnumber <= 99)
+                themeIndex = 3; // Tour verte           15%
         }
         return towerThemes[themeIndex];
     }

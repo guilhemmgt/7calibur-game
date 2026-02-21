@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 
     // Réinitialise le joueur et le dragon et génère une nouvelle tour
     private void ResetGame () {
-        player_movement.ResetMovement ();
+        // player_movement.ResetMovement ();
         towerGen.GenerateTower ();
         ResetPlayer ();
         ResetDragon ();
