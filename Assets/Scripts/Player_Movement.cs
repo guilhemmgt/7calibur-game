@@ -47,10 +47,10 @@ public class Player_Movement : MonoBehaviour {
         animator.SetBool ("isBroken", isBroken);
 
         // Flip selon la direction du déplacement
-        if (body.velocity.x > 0f) {
+        if (body.linearVelocity.x > 0f) {
             spriteRenderer.flipX = true;
         }
-        if (body.velocity.x < 0f) {
+        if (body.linearVelocity.x < 0f) {
             spriteRenderer.flipX = false;
         }
         
@@ -60,7 +60,7 @@ public class Player_Movement : MonoBehaviour {
 
     private void FixedUpdate () {
         // Déplacement horizontal
-        body.velocity = new Vector2 (xInput * horizontalSlide, body.velocity.y);
+        body.linearVelocity = new Vector2 (xInput * horizontalSlide, body.linearVelocity.y);
     }
 
     // Fonction OnCollisionStay2D de Feet
@@ -69,7 +69,7 @@ public class Player_Movement : MonoBehaviour {
 			return;
 
 		// Jump si on rebondit sur une plateforme
-		if (body.velocity.y <= 0 && (other.transform.tag == "Platform" || other.transform.tag == "GroundPlatform")) {
+		if (body.linearVelocity.y <= 0 && (other.transform.tag == "Platform" || other.transform.tag == "GroundPlatform")) {
 			Jump (verticalBounce);
 			canWallJump = true;
 		}
@@ -93,7 +93,7 @@ public class Player_Movement : MonoBehaviour {
 
 	private void Jump (float force) {
         // Vélocité
-        body.velocity = new Vector2 (0, force);
+        body.linearVelocity = new Vector2 (0, force);
         // Décompte du nb de sauts
         jump -= 1;
         // Animation

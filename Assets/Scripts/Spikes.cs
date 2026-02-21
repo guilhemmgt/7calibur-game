@@ -17,7 +17,7 @@ public class Spikes : MonoBehaviour {
 			return;
 
 		// Si on arrive sur les piques depuis le haut, game over
-		if (other.transform.position.y >= transform.position.y - 0.1f && other.attachedRigidbody.velocity.y <= 0 && !player_mvt.is7Calibur) {
+		if (other.transform.position.y >= transform.position.y - 0.1f && other.attachedRigidbody.linearVelocity.y <= 0 && !player_mvt.is7Calibur) {
 			gameManager.GameOver ();
 		}
 	}
