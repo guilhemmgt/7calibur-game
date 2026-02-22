@@ -243,6 +243,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""54b5a94b-a7ae-4201-95e8-94eeef9112fa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Keyboard"",
                     ""id"": ""c5787610-c10a-4139-b1d7-116a472a3d8d"",
                     ""path"": ""1DAxis"",
