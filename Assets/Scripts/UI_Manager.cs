@@ -10,6 +10,8 @@ public class UI_Manager : MonoBehaviour {
     private Player_Movement player_Movement;
     private Player_System player_system;
     private ScoreKey scoreKey;
+    private InputActions inputActions;
+
 
     // Textes
     public TextMeshProUGUI Text_Score;
@@ -37,7 +39,12 @@ public class UI_Manager : MonoBehaviour {
         gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
         player_Movement = gameManager.player.GetComponent<Player_Movement> ();
         player_system = gameManager.player.GetComponent<Player_System> ();
-        scoreKey = gameManager.GetComponent<ScoreKey> ();
+        scoreKey = gameManager.GetComponent<ScoreKey>();
+        inputActions = new InputActions();
+    }
+
+    private void OnEnable() {
+        inputActions.Enable();
     }
 
     private void Update () {
@@ -68,28 +75,28 @@ public class UI_Manager : MonoBehaviour {
 
         // Gestion des inputs selon l'UI ouverte
         if (activeUI == pauseUI) { // UI pause
-            if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
+            if (inputActions.Map.Ok.triggered) {
                 gameManager.Play ();
             }
-			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
+			if (inputActions.Map.Back.triggered) {
 				gameManager.Menu ();
 			}
 		} else if (activeUI == gameOverUI) { // UI Game Over
-			if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
+			if (inputActions.Map.Ok.triggered) {
 				gameManager.ReplayAfterGameOver ();
 			}
-			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
+			if (inputActions.Map.Back.triggered) {
 				gameManager.Menu ();
 			}
 		} else if (activeUI == gameUI) { // UI Jeu
-            if (Input.GetKeyDown (KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick1Button6)) {
+            if (inputActions.Map.Back.triggered || inputActions.Map.Ok.triggered) {
                 gameManager.Pause ();
             }
         } else if (activeUI == menuUI) { // UI Menu
-            if (Input.GetKeyDown(KeyCode.Joystick1Button6)) {
+            if (inputActions.Map.Ok.triggered) {
                 gameManager.Play ();
             }
-			if (Input.GetKeyDown (KeyCode.Joystick1Button7)) {
+			if (inputActions.Map.Back.triggered) {
 				gameManager.QuitGame ();
 			}
 		}

@@ -23,18 +23,24 @@ public class Player_Movement : MonoBehaviour {
     private float xInput = 0; // Input directionnel (-1, 0, 1)
     private bool leftPressed = false; // Bouton gauche pressé ?
     private bool rightPressed = false; // Bouton droit pressé ?
+    private InputActions inputActions;
 
     // Audio
 
     private AudioManager audiomanager;
     public GameObject gameManager;
 
-    private void Awake () {
-        gameManager = GameObject.Find ("GameManager");
-        body = GetComponent<Rigidbody2D> ();
-        spriteRenderer = GetComponent<SpriteRenderer> ();
-        animator = GetComponent<Animator> ();
+    private void Awake() {
+        gameManager = GameObject.Find("GameManager");
+        body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         audiomanager = gameManager.GetComponent<AudioManager>();
+        inputActions = new InputActions();
+    }
+    
+    private void OnEnable() {
+        inputActions.Enable();
     }
 
     private void Update () {
@@ -50,12 +56,13 @@ public class Player_Movement : MonoBehaviour {
         if (body.linearVelocity.x > 0f) {
             spriteRenderer.flipX = true;
         }
-        if (body.linearVelocity.x < 0f) {
+        if (body.linearVelocity.x < 0f)
+        {
             spriteRenderer.flipX = false;
         }
-        
+
         // Controles direction
-        xInput = Input.GetAxisRaw("Horizontal");
+        xInput = inputActions.Map.Move.ReadValue<float>();
     }
 
     private void FixedUpdate () {
