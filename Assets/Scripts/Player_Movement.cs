@@ -62,7 +62,30 @@ public class Player_Movement : MonoBehaviour {
         }
 
         // Controles direction
-        xInput = inputActions.Map.Move.ReadValue<float>();
+        if (leftPressed && rightPressed)
+            xInput = 0f;
+        else if (leftPressed)
+            xInput = -1f;
+        else if (rightPressed)
+            xInput = 1f;
+        else
+            xInput = inputActions.Map.Move.ReadValue<float>();
+    }
+
+    public void PressLeft()
+    {
+        leftPressed = true;
+    }
+    public void ReleaseLeft() {
+        leftPressed = false;
+    }
+
+
+    public void PressRight() {
+        rightPressed = true;
+    }
+    public void ReleaseRight() {
+        rightPressed = false;
     }
 
     private void FixedUpdate () {
