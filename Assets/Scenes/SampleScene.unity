@@ -627,8 +627,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 996010803
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &179811924
 RectTransform:
@@ -649,8 +649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.9397998, y: 0.7802998}
-  m_SizeDelta: {x: 794.7325, y: 1720}
+  m_AnchoredPosition: {x: -0.9397998, y: 0}
+  m_SizeDelta: {x: 780, y: 1720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &184284889
 GameObject:
@@ -1126,8 +1126,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 996010803
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &363039349
 RectTransform:
@@ -1152,8 +1152,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.9397998, y: 0.7802998}
-  m_SizeDelta: {x: 794.7325, y: 1720}
+  m_AnchoredPosition: {x: -0.9397998, y: 0}
+  m_SizeDelta: {x: 780, y: 1720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &391112411
 GameObject:
@@ -2443,8 +2443,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 996010803
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &703874560
 RectTransform:
@@ -2454,7 +2454,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703874556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.19312811}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2467,8 +2467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.9397998, y: 0.7802998}
-  m_SizeDelta: {x: 794.7325, y: 1720}
+  m_AnchoredPosition: {x: -0.9397998, y: 0}
+  m_SizeDelta: {x: 780, y: 1720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &761372025
 GameObject:
@@ -2605,7 +2605,7 @@ Transform:
   m_GameObject: {fileID: 808862977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9398, y: -0.7803, z: 9.806871}
+  m_LocalPosition: {x: 1, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &846659913
 Canvas:
   m_ObjectHideFlags: 0
@@ -5383,7 +5383,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374226726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.19312811}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5393,8 +5393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.9397998, y: 0.7802998}
-  m_SizeDelta: {x: 794.7325, y: 1720}
+  m_AnchoredPosition: {x: -0.9397998, y: 0}
+  m_SizeDelta: {x: 780, y: 1720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374226728
 MonoBehaviour:
@@ -8086,8 +8086,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.9397998, y: 0.7802998}
-  m_SizeDelta: {x: 794.7325, y: 1720}
+  m_AnchoredPosition: {x: -0.9397998, y: 0}
+  m_SizeDelta: {x: 780, y: 1720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056705835
 MonoBehaviour:
@@ -8149,8 +8149,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 996010803
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1 &2065580177
 GameObject:
