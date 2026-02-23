@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour {
         player.GetComponent<Rigidbody2D> ().linearVelocity = Vector3.zero; // Vélocité
         player_movement.is7Calibur = false;
         player.GetComponent<Animator> ().Play ("Sword");
-        player_system.ResetScoreEffect ();
+        player_system.ResetScoreEffect();
+        player_movement.ReleaseRight();
+        player_movement.ReleaseLeft();
     }
 
     // Réinitialise le dragon
